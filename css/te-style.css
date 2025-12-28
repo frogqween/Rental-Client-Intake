@@ -265,7 +265,6 @@ select:focus,
 textarea:focus {
     border-color: var(--accent-color);
     box-shadow: none;
-    color: var(--accent-color);
 }
 
 select {
