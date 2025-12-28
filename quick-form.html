@@ -47,6 +47,17 @@
                 font-size: 3rem !important;
             }
         }
+
+        @media (max-width: 480px) {
+            .quick-left,
+            .quick-right {
+                padding: 20px 15px;
+            }
+
+            h1 {
+                font-size: 2.2rem !important;
+            }
+        }
     </style>
 </head>
 
@@ -56,11 +67,7 @@
         <header>
             <div class="brand">
                 Key Legacy Realty
-                <span class="sub">Philadelphia Rentals // EST. 2025</span>
-            </div>
-            <div class="status-indicator">
-                <div class="indicator-dot"></div>
-                SYSTEM ONLINE
+                <span class="sub">Philadelphia Rentals</span>
             </div>
         </header>
 
@@ -69,14 +76,13 @@
             <!-- Left Panel: Typography & Infos -->
             <div class="quick-left" style="padding: 0;">
                 <a href="index.html" class="nav-item" style="border-left: none;">
-                    <span>←</span> BACK
+                    Back
                 </a>
 
                 <div style="padding: 40px;">
-                    <h1 style="font-size: 5rem; line-height: 0.85; margin-bottom: 20px;">QUICK<br>CONTACT</h1>
+                    <h1 style="font-size: 5rem; line-height: 0.85; margin-bottom: 20px; text-transform: none;">Quick Contact</h1>
                     <p class="description-small" style="max-width: 300px;">
-                        RAPID INTAKE CHANNEL.<br>
-                        PROVIDE ESSENTIAL COORDINATES FOR IMMEDIATE CONNECTION.
+                        Share a few details and we’ll be in touch shortly.
                     </p>
                 </div>
             </div>
@@ -85,34 +91,31 @@
             <div class="quick-right form-panel">
                 <form id="quickForm"
                     onsubmit="event.preventDefault(); alert('Transmission Received. System will process data.'); window.location.href='index.html';">
-                    <div class="input-group">
-                        <label class="input-label">Full Name <span style="color: var(--accent-color);">*</span></label>
-                        <input type="text" placeholder="John Smith" required>
+                    <div class="floating-label-group">
+                        <input type="text" id="quickFullName" placeholder=" " required>
+                        <label for="quickFullName">Full Name</label>
+                    </div>
+
+                    <div class="floating-label-group">
+                        <input type="tel" id="quickPhone" placeholder=" " required>
+                        <label for="quickPhone">Phone Number</label>
+                    </div>
+
+                    <div class="floating-label-group">
+                        <input type="email" id="quickEmail" placeholder=" " required>
+                        <label for="quickEmail">Email Address</label>
                     </div>
 
                     <div class="input-group">
-                        <label class="input-label">Phone Number <span
-                                style="color: var(--accent-color);">*</span></label>
-                        <input type="tel" placeholder="(000) 000-0000" required>
-                    </div>
-
-                    <div class="input-group">
-                        <label class="input-label">Email Address <span
-                                style="color: var(--accent-color);">*</span></label>
-                        <input type="email" placeholder="john@example.com" required>
-                    </div>
-
-                    <div class="input-group">
-                        <label class="input-label">What are you looking for? <span
-                                style="color: var(--accent-color);">*</span></label>
-                        <textarea placeholder="e.g., 2 bedroom apartment in Center City, move-in by March..." required
+                        <label class="input-label">What are you looking for?</label>
+                        <textarea placeholder="Neighborhood, bedrooms, move-in timing, or anything important to you" required
                             style="height: 150px;"></textarea>
                     </div>
 
                     <div id="consent-section" style="margin-bottom: 20px; display: none; gap: 10px;">
-                        <input type="checkbox" id="consent" required style="width: auto;">
+                        <input type="checkbox" id="consent" required>
                         <label for="consent"
-                            style="font-size: 10px; color: var(--muted-color); text-transform: uppercase; line-height: 1.4;">
+                            style="font-size: 10px; color: var(--muted-color); line-height: 1.4;">
                             I agree to be contacted by a member from Key Legacy Realty via call, email, and text. To opt
                             out, you can reply 'stop' at any time or click the unsubscribe link in the emails. Message
                             and data rates may apply. Msg frequency varies. <a
