@@ -46,10 +46,16 @@
         }
 
         .nav-item.active {
-            background: var(--bg-color);
-            border-left-color: var(--accent-color);
+            background: white;
+            border-left: 4px solid var(--accent-color);
             margin-right: -1px;
             z-index: 10;
+            font-weight: 800;
+        }
+
+        .nav-item.active .nav-title {
+            color: var(--text-color);
+            font-weight: 800;
         }
 
         .nav-item.completed {
