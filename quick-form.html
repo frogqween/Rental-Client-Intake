@@ -86,34 +86,44 @@
                 <form id="quickForm"
                     onsubmit="event.preventDefault(); alert('Transmission Received. System will process data.'); window.location.href='index.html';">
                     <div class="input-group">
-                        <label class="input-label">Name</label>
-                        <input type="text" placeholder="EX: JOHN DOE" required>
+                        <label class="input-label">Full Name <span style="color: var(--accent-color);">*</span></label>
+                        <input type="text" placeholder="John Smith" required>
                     </div>
 
                     <div class="input-group">
-                        <label class="input-label">Phone</label>
+                        <label class="input-label">Phone Number <span
+                                style="color: var(--accent-color);">*</span></label>
                         <input type="tel" placeholder="(000) 000-0000" required>
                     </div>
 
                     <div class="input-group">
-                        <label class="input-label">Email</label>
-                        <input type="email" placeholder="USER@DOMAIN.COM" required>
+                        <label class="input-label">Email Address <span
+                                style="color: var(--accent-color);">*</span></label>
+                        <input type="email" placeholder="john@example.com" required>
                     </div>
 
                     <div class="input-group">
-                        <label class="input-label">Requirements</label>
-                        <textarea placeholder="SPECIFY TARGET PARAMS..." required style="height: 150px;"></textarea>
+                        <label class="input-label">What are you looking for? <span
+                                style="color: var(--accent-color);">*</span></label>
+                        <textarea placeholder="e.g., 2 bedroom apartment in Center City, move-in by March..." required
+                            style="height: 150px;"></textarea>
                     </div>
 
                     <div style="margin-bottom: 20px; display: flex; gap: 10px;">
                         <input type="checkbox" id="consent" required style="width: auto;">
                         <label for="consent"
-                            style="font-size: 10px; color: var(--muted-color); text-transform: uppercase;">
-                            Acknowledge transmission protocols. Data will be processed by Key Legacy Realty systems.
+                            style="font-size: 10px; color: var(--muted-color); text-transform: uppercase; line-height: 1.4;">
+                            I agree to be contacted by a member from Key Legacy Realty via call, email, and text. To opt
+                            out, you can reply 'stop' at any time or click the unsubscribe link in the emails. Message
+                            and data rates may apply. Msg frequency varies. <a
+                                href="https://v0-rental-client-intake-form.vercel.app/privacy" target="_blank"
+                                style="color: var(--accent-color); text-decoration: underline;">Privacy Policy</a> & <a
+                                href="https://v0-rental-client-intake-form.vercel.app/terms" target="_blank"
+                                style="color: var(--accent-color); text-decoration: underline;">Terms of Service</a>
                         </label>
                     </div>
 
-                    <button type="submit" class="btn-submit">Transmit Data</button>
+                    <button type="submit" class="btn-submit">Submit</button>
                 </form>
             </div>
         </div>
