@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Application | Key Legacy Realty</title>
+    <link rel="stylesheet" href="css/te-style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .form-section {
+            display: none;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .form-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .nav-item {
+            cursor: pointer;
+            width: 100%;
+            text-align: left;
+            background: none;
+            border: none;
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--border-color);
+            border-left: 2px solid transparent;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+
+        .nav-item:hover {
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-item.active {
+            background: var(--bg-color);
+            border-left-color: var(--accent-color);
+            margin-right: -1px;
+            z-index: 10;
+        }
+
+        .nav-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: var(--muted-color);
+        }
+
+        .nav-item.active .nav-label {
+            color: var(--accent-color);
+        }
+
+        .nav-title {
+            font-size: 14px;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-top: 4px;
+            color: var(--text-color);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <div class="brand">
+                Key Legacy Realty
+                <span class="sub">Philadelphia Rentals // EST. 2025</span>
+            </div>
+            <div class="status-indicator">
+                <div class="indicator-dot"></div>
+                SYSTEM ONLINE
+            </div>
+        </header>
+
+        <div class="split-layout">
+            <!-- Left Sidebar: Context -->
+            <div class="sidebar" style="padding: 0; display: flex; flex-direction: column;">
+                <div style="padding: 30px;">
+                    <a href="index.html" class="back-link">
+                        <i data-lucide="arrow-left" width="12"></i> BACK
+                    </a>
+
+                    <div class="module-header">
+                        <div class="icon-box" style="margin-bottom: 20px;">
+                            <i data-lucide="file-text" width="20"></i>
+                        </div>
+                        <h1 style="font-size: 2rem;">FULL<br>APPLICATION</h1>
+                        <span class="module-id">MODULE ID: APP-002</span>
+                    </div>
+                </div>
+
+                <nav style="flex: 1; border-top: 1px solid var(--border-color);">
+                    <button class="nav-item active" onclick="switchSection(1)">
+                        <div class="nav-label">01 // Personal Info</div>
+                        <div class="nav-title">PERSONAL INFO</div>
+                    </button>
+                    <button class="nav-item" onclick="switchSection(2)">
+                        <div class="nav-label">02 // Property Requirements</div>
+                        <div class="nav-title">PROPERTY REQUIREMENTS</div>
+                    </button>
+                    <button class="nav-item" onclick="switchSection(3)">
+                        <div class="nav-label">03 // Financial & Background</div>
+                        <div class="nav-title">FINANCIAL & BACKGROUND</div>
+                    </button>
+                    <button class="nav-item" onclick="switchSection(4)">
+                        <div class="nav-label">04 // Additional Info</div>
+                        <div class="nav-title">ADDITIONAL INFO</div>
+                    </button>
+                </nav>
+            </div>
+
+            <!-- Right Panel: Form -->
+            <div class="form-panel">
+                <form id="fullApplicationForm" onsubmit="handleFinalSubmit(event)">
+
+                    <!-- SECTION 1: IDENTITY -->
+                    <div id="section-1" class="form-section active">
+                        <div style="margin-bottom: 30px;">
+                            <span class="badge">STEP 01 OF 04</span>
+                            <h2 style="margin-top: 10px; font-size: 24px;">PERSONAL INFO</h2>
+                        </div>
+
+                        <!-- Consumer Notice Block -->
+                        <div
+                            style="padding: 20px; background: rgba(0,0,0,0.03); border: 1px solid var(--border-color); margin-bottom: 30px;">
+                            <p
+                                style="font-size: 12px; color: var(--muted-color); margin-bottom: 15px; line-height: 1.5;">
+                                By proceeding, you acknowledge receiving and reading the
+                                <a href="#"
+                                    style="color: var(--text-color); font-weight: 700; text-decoration: none;">Consumer
+                                    Notice</a> and
+                                <a href="#"
+                                    style="color: var(--text-color); font-weight: 700; text-decoration: none;">Application
+                                    Criteria</a>.
+                            </p>
+                            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                <input type="checkbox" required
+                                    style="width: 16px; height: 16px; border: 1px solid var(--border-color); appearance: auto;">
+                                <span style="font-size: 12px; font-weight: 700; text-transform: uppercase;">I
+                                    acknowledge <span style="color: var(--accent-color);">*</span></span>
+                            </label>
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input-label">Full Name <span
+                                    style="color: var(--accent-color);">*</span></label>
+                            <input type="text" name="fullName" placeholder="EX: JOHN DOE" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input-label">Phone <span style="color: var(--accent-color);">*</span></label>
+                            <input type="tel" name="phone" placeholder="(000) 000-0000" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input-label">Email <span style="color: var(--accent-color);">*</span></label>
+                            <input type="email" name="email" placeholder="USER@DOMAIN.COM" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input-label">Contact Method <span
+                                    style="color: var(--accent-color);">*</span></label>
+                            <select name="preferredContact"
+                                style="width: 100%; padding: 12px; border: 1px solid var(--border-color); background: var(--input-bg); outline: none;">
+                                <option value="">SELECT METHOD...</option>
+                                <option value="email">EMAIL</option>
+                                <option value="phone">PHONE call</option>
+                                <option value="text">TEXT message</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input-label">Have Agent? <span
+                                    style="color: var(--accent-color);">*</span></label>
+                            <div style="display: flex; gap: 20px; margin-top: 5px;">
+                                <label style="display: flex; align-items: center; gap: 5px; font-size: 12px;">
+                                    <input type="radio" name="agent" value="yes"> YES
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 5px; font-size: 12px;">
+                                    <input type="radio" name="agent" value="no" checked> NO
+                                </label>
+                            </div>
+                        </div>
+
+                        <button type="button" class="btn-submit" onclick="nextSection()">Proceed to Specs</button>
+                    </div>
+
+                    <!-- SECTION 2: PROPERTY REQUIREMENTS -->
+                    <div id="section-2" class="form-section">
+                        <div style="margin-bottom: 30px;">
+                            <span class="badge">STEP 02 OF 04</span>
+                            <h2 style="margin-top: 10px; font-size: 24px;">PROPERTY REQUIREMENTS</h2>
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input-label">Property Type Interest</label>
+                            <input type="text" name="propertyInterest" placeholder="EX: APARTMENT, HOUSE, STUDIO..."
+                                required>
+                        </div>
+
+                        <!-- Button Group: Bedrooms -->
+                        <div class="input-group">
+                            <label class="input-label">Bedroom Count (Select Multiple)</label>
+                            <div class="button-group" id="bedroom-group">
+                                <!-- JS will populate hidden input -->
+                                <input type="hidden" name="bedrooms" id="input-bedrooms" required>
+
+                                <button type="button" class="option-btn"
+                                    onclick="toggleOption(this, 'input-bedrooms', 'Studio')">Studio</button>
+                                <button type="button" class="option-btn"
+                                    onclick="toggleOption(this, 'input-bedrooms', '1 BR')">1 BR</button>
+                                <button type="button" class="option-btn"
+                                    onclick="toggleOption(this, 'input-bedrooms', '2 BR')">2 BR</button>
+                                <button type="button" class="option-btn"
+                                    onclick="toggleOption(this, 'input-bedrooms', '3 BR')">3 BR</button>
+                                <button type="button" class="option-btn"
+                                    onclick="toggleOption(this, 'input-bedrooms', '4 BR')">4 BR</button>
+                                <button type="button" class="option-btn"
+                                    onclick="toggleOption(this, 'input-bedrooms', '5+')">5+</button>
+                            </div>
+                        </div>
+
+                        <!-- Button Group: Neighborhoods -->
+                        <div class="input-group">
+                            <label class="input-label">Desired Neighborhoods (Select Multiple)</label>
+                            <div class="button-group">
+                                <input type="hidden" name="neighborhoods" id="input-neighborhoods" required>
+                                <button type="button" class="option-btn"
+                                    onclick="toggleOption(this, 'input-neighborhoods', 'Center City')">Center
+                                    City</button>
+                                <button type="button" class="option-btn"
+                                    onclick="toggleOption(this, 'input-neighborhoods', 'Old City/Society Hill')">Old
+                                    City/Society Hill</button>
+                                <button type="button" class="option-btn"
+                                    onclick="toggleOption(this, 'input-neighborhoods', 'Rittenhouse/Fitler Square')">Rittenhouse/Fitler
+                                    Square</button>
+                                <button type="button" class="option-btn"
+                                    onclick="toggleOption(this, 'input-neighborhoods', 'University City/West Philly')">University
+                                    City/West Philly</button>
+                                <button type="button" class="option-btn"
+                                    onclick="toggleOption(this, 'input-neighborhoods', 'South Philly/Passyunk')">South
+                                    Philly/Passyunk</button>
+                                <button type="button" class="option-btn"
+                                    onclick="toggleOption(this, 'input-neighborhoods', 'Northern Liberties/Fishtown')">Northern
+                                    Liberties/Fishtown</button>
+                                <button type="button" class="option-btn"
+                                    onclick="toggleOption(this, 'input-neighborhoods', 'Fairmount/Art Museum')">Fairmount/Art
+                                    Museum</button>
+                                <button type="button" class="option-btn"
+                                    onclick="toggleOption(this, 'input-neighborhoods', 'Manayunk/Roxborough')">Manayunk/Roxborough</button>
+                                <button type="button" class="option-btn"
+                                    onclick="toggleOption(this, 'input-neighborhoods', 'Chestnut Hill/Mt. Airy')">Chestnut
+                                    Hill/Mt. Airy</button>
+                                <button type="button" class="option-btn"
+                                    onclick="toggleOption(this, 'input-neighborhoods', 'Northeast Philadelphia')">Northeast
+                                    Philadelphia</button>
+                                <button type="button" class="option-btn"
+                                    onclick="toggleOption(this, 'input-neighborhoods', 'North Philly/Temple Area')">North
+                                    Philly/Temple Area</button>
+                                <button type="button" class="option-btn"
+                                    onclick="toggleOption(this, 'input-neighborhoods', 'Southwest Philly')">Southwest
+                                    Philly</button>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; gap: 20px;">
+                            <div class="input-group" style="flex: 1;">
+                                <label class="input-label">Target Move-in Date</label>
+                                <input type="date" name="moveInDate"
+                                    style="width: 100%; padding: 11px; border: 1px solid var(--border-color);" required>
+                            </div>
+                        </div>
+
+                        <!-- Button Group: Budget -->
+                        <div class="input-group">
+                            <label class="input-label">Monthly Budget (Select Multiple)</label>
+                            <div class="button-group">
+                                <input type="hidden" name="budget" id="input-budget" required>
+                                <button type="button" class="option-btn"
+                                    onclick="toggleOption(this, 'input-budget', '$800-1,000')">$800-$1,000</button>
+                                <button type="button" class="option-btn"
+                                    onclick="toggleOption(this, 'input-budget', '$1,000-1,200')">$1,000-$1,200</button>
+                                <button type="button" class="option-btn"
+                                    onclick="toggleOption(this, 'input-budget', '$1,200-1,500')">$1,200-$1,500</button>
+                                <button type="button" class="option-btn"
+                                    onclick="toggleOption(this, 'input-budget', '$1,500-1,800')">$1,500-$1,800</button>
+                                <button type="button" class="option-btn"
+                                    onclick="toggleOption(this, 'input-budget', '$1,800-2,200')">$1,800-$2,200</button>
+                                <button type="button" class="option-btn"
+                                    onclick="toggleOption(this, 'input-budget', '$2,200+')">$2,200+</button>
+                            </div>
+                        </div>
+
+                        <!-- Button Group: Non-Negotiables -->
+                        <div class="input-group">
+                            <label class="input-label">Non-Negotiables (Must Haves)</label>
+                            <div class="button-group">
+                                <input type="hidden" name="nonNegotiables" id="input-negotiables" required>
+                                <button type="button" class="option-btn"
+                                    onclick="toggleOption(this, 'input-negotiables', 'Parking')">Parking</button>
+                                <button type="button" class="option-btn"
+                                    onclick="toggleOption(this, 'input-negotiables', 'In-unit Laundry')">In-unit
+                                    Laundry</button>
+                                <button type="button" class="option-btn"
+                                    onclick="toggleOption(this, 'input-negotiables', 'Pet Friendly')">Pet
+                                    Friendly</button>
+                                <button type="button" class="option-btn"
+                                    onclick="toggleOption(this, 'input-negotiables', 'Central AC')">Central AC</button>
+                                <button type="button" class="option-btn"
+                                    onclick="toggleOption(this, 'input-negotiables', 'Dishwasher')">Dishwasher</button>
+                                <button type="button" class="option-btn"
+                                    onclick="toggleOption(this, 'input-negotiables', 'Outdoor Space')">Outdoor
+                                    Space</button>
+                                <button type="button" class="option-btn"
+                                    onclick="toggleOption(this, 'input-negotiables', 'Gym Access')">Gym Access</button>
+                                <button type="button" class="option-btn"
+                                    onclick="toggleOption(this, 'input-negotiables', 'Storage')">Storage</button>
+                                <button type="button" class="option-btn"
+                                    onclick="toggleOption(this, 'input-negotiables', 'Utilities Included')">Utilities
+                                    Included</button>
+                                <button type="button" class="option-btn"
+                                    onclick="toggleOption(this, 'input-negotiables', 'Doorman/Security')">Doorman/Security</button>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; gap: 10px;">
+                            <button type="button" class="btn-submit"
+                                style="background: transparent; color: var(--text-color); border: 1px solid var(--border-color); flex: 1;"
+                                onclick="prevSection()">Back</button>
+                            <button type="button" class="btn-submit" style="flex: 2;" onclick="nextSection()">Proceed to
+                                Financials</button>
+                        </div>
+                    </div>
+
+                    <!-- SECTION 3: FINANCIAL & BACKGROUND -->
+                    <div id="section-3" class="form-section">
+                        <div style="margin-bottom: 30px;">
+                            <span class="badge">STEP 03 OF 04</span>
+                            <h2 style="margin-top: 10px; font-size: 24px;">FINANCIAL & BACKGROUND</h2>
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input-label">Evictions (4 yrs)? <span
+                                    style="color: var(--accent-color);">*</span></label>
+                            <select name="evictions"
+                                style="width: 100%; padding: 12px; border: 1px solid var(--border-color); background: var(--input-bg); outline: none;">
+                                <option value="">SELECT...</option>
+                                <option value="no">No</option>
+                                <option value="yes">Yes</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input-label">Income 3x rent? <span
+                                    style="color: var(--accent-color);">*</span></label>
+                            <select name="verifiableIncome"
+                                style="width: 100%; padding: 12px; border: 1px solid var(--border-color); background: var(--input-bg); outline: none;">
+                                <option value="">SELECT...</option>
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                                <option value="close">Close</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input-label">Credit Score <span
+                                    style="color: var(--accent-color);">*</span></label>
+                            <select name="creditScore"
+                                style="width: 100%; padding: 12px; border: 1px solid var(--border-color); background: var(--input-bg); outline: none;">
+                                <option value="">SELECT...</option>
+                                <option value="excellent">Excellent (740+)</option>
+                                <option value="great">Great (680-739)</option>
+                                <option value="good">Good (620-679)</option>
+                                <option value="fair">Fair (580-619)</option>
+                                <option value="poor">Poor (<580)< /option>
+                                <option value="unknown">Unknown</option>
+                            </select>
+                        </div>
+
+                        <div style="margin-bottom: 20px;">
+                            <button type="button" class="quick-fill-btn" onclick="quickFillFinancials()">
+                                <i data-lucide="zap" width="12"></i> QUICK FILL: NO EVICTIONS, 3x INCOME, NO
+                                CO-APPLICANTS
+                            </button>
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input-label">Co-applicants? <span
+                                    style="color: var(--accent-color);">*</span></label>
+                            <select name="coapplicants"
+                                style="width: 100%; padding: 12px; border: 1px solid var(--border-color); background: var(--input-bg); outline: none;">
+                                <option value="">SELECT...</option>
+                                <option value="no">No, just me</option>
+                                <option value="yes">Yes</option>
+                            </select>
+                        </div>
+
+                        <div style="display: flex; gap: 10px;">
+                            <button type="button" class="btn-submit"
+                                style="background: transparent; color: var(--text-color); border: 1px solid var(--border-color); flex: 1;"
+                                onclick="prevSection()">Back</button>
+                            <button type="button" class="btn-submit" style="flex: 2;"
+                                onclick="nextSection()">Continue</button>
+                        </div>
+                    </div>
+
+                    <!-- SECTION 4: ADDITIONAL INFO -->
+                    <div id="section-4" class="form-section">
+                        <div style="margin-bottom: 30px;">
+                            <span class="badge">STEP 04 OF 04</span>
+                            <h2 style="margin-top: 10px; font-size: 24px;">ADDITIONAL INFO</h2>
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input-label">Pets?</label>
+                            <select name="pets" id="petSelect" onchange="togglePetDetails()"
+                                style="width: 100%; padding: 12px; border: 1px solid var(--border-color); background: var(--input-bg); outline: none;">
+                                <option value="no">No pets</option>
+                                <option value="yes">Yes</option>
+                            </select>
+                            <div id="petDetails" style="display: none; margin-top: 10px;">
+                                <input type="text" name="petDetails" placeholder="TYPE/BREED/WEIGHT...">
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input-label">Tour Availability (Select Multiple)</label>
+
+                            <div style="margin-bottom: 15px;">
+                                <label class="input-label" style="font-size: 9px; margin-bottom: 5px;">DAYS</label>
+                                <div class="button-group">
+                                    <input type="hidden" name="tourDays" id="input-tour-days" required>
+                                    <button type="button" class="option-btn"
+                                        onclick="toggleOption(this, 'input-tour-days', 'Mon')">Mon</button>
+                                    <button type="button" class="option-btn"
+                                        onclick="toggleOption(this, 'input-tour-days', 'Tue')">Tue</button>
+                                    <button type="button" class="option-btn"
+                                        onclick="toggleOption(this, 'input-tour-days', 'Wed')">Wed</button>
+                                    <button type="button" class="option-btn"
+                                        onclick="toggleOption(this, 'input-tour-days', 'Thu')">Thu</button>
+                                    <button type="button" class="option-btn"
+                                        onclick="toggleOption(this, 'input-tour-days', 'Fri')">Fri</button>
+                                    <button type="button" class="option-btn"
+                                        onclick="toggleOption(this, 'input-tour-days', 'Sat')">Sat</button>
+                                    <button type="button" class="option-btn"
+                                        onclick="toggleOption(this, 'input-tour-days', 'Sun')">Sun</button>
+                                </div>
+                            </div>
+
+                            <div style="margin-bottom: 15px;">
+                                <label class="input-label" style="font-size: 9px; margin-bottom: 5px;">TIMES</label>
+                                <div class="button-group">
+                                    <input type="hidden" name="tourTimes" id="input-tour-times" required>
+                                    <button type="button" class="option-btn"
+                                        onclick="toggleOption(this, 'input-tour-times', 'morning')">Morning
+                                        (9-12)</button>
+                                    <button type="button" class="option-btn"
+                                        onclick="toggleOption(this, 'input-tour-times', 'afternoon')">Afternoon
+                                        (12-5)</button>
+                                    <button type="button" class="option-btn"
+                                        onclick="toggleOption(this, 'input-tour-times', 'evening')">Evening
+                                        (5+)</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input-label">Additional Notes</label>
+                            <textarea name="notes" placeholder="ANYTHING ELSE WE SHOULD KNOW?"></textarea>
+                        </div>
+
+                        <div style="margin-bottom: 20px; display: flex; gap: 10px; align-items: flex-start;">
+                            <input type="checkbox" id="consentFull" required style="width: auto; margin-top: 3px;">
+                            <label for="consentFull"
+                                style="font-size: 10px; color: var(--muted-color); text-transform: uppercase; line-height: 1.4;">
+                                I certify that the information provided is accurate and acknowledge that this data will
+                                be processed by Key Legacy Realty for application scheduling.
+                            </label>
+                        </div>
+
+                        <div style="display: flex; gap: 10px;">
+                            <button type="button" class="btn-submit"
+                                style="background: transparent; color: var(--text-color); border: 1px solid var(--border-color); flex: 1;"
+                                onclick="prevSection()">Back</button>
+                            <button type="submit" class="btn-submit" style="flex: 2;">Submit Intake Form</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        let currentSection = 1;
+        const totalSections = 4;
+
+        function switchSection(step) {
+            document.querySelectorAll('.form-section').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+
+            document.getElementById(`section-${step}`).classList.add('active');
+            const navItems = document.querySelectorAll('.nav-item');
+            if (navItems[step - 1]) navItems[step - 1].classList.add('active');
+
+            currentSection = step;
+        }
+
+        function toggleOption(btn, inputId, value) {
+            btn.classList.toggle('active');
+
+            const input = document.getElementById(inputId);
+            const parent = btn.parentElement;
+            const activeBtns = parent.querySelectorAll('.option-btn.active');
+
+            const selectedValues = Array.from(activeBtns).map(b => b.textContent.trim()).join(', ');
+            input.value = selectedValues;
+
+            // Remove error styling if valid
+            if (selectedValues) input.style.borderColor = '';
+        }
+
+        function nextSection() {
+            if (currentSection < totalSections) {
+                const inputs = document.getElementById(`section-${currentSection}`).querySelectorAll('input[required], select[required]');
+                let valid = true;
+                inputs.forEach(input => {
+                    // For hidden inputs (button groups), check if they have a value
+                    if (!input.value) {
+                        if (input.type === 'hidden') {
+                            // Highlight the button group container (optional, or alert)
+                            // For simplicity, we just flag validation
+                            valid = false;
+                            alert('Please make a selection for ' + input.name);
+                        } else {
+                            input.style.borderColor = 'red';
+                            valid = false;
+                        }
+                    } else {
+                        input.style.borderColor = '';
+                    }
+                });
+
+                if (valid) {
+                    switchSection(currentSection + 1);
+                } else if (!valid && !document.querySelector('input[type="hidden"][required]:invalid')) {
+                    // Fallback alert primarily for text inputs if not caught above
+                    // But logic above handles both.
+                }
+            }
+        }
+
+        function prevSection() {
+            if (currentSection > 1) {
+                switchSection(currentSection - 1);
+            }
+        }
+
+        function handleFinalSubmit(e) {
+            e.preventDefault();
+            // Here you would gather all form data: const data = new FormData(e.target);
+            alert('Application Transmission Successful.\n\nThank you for choosing Key Legacy Realty.');
+            window.location.href = 'index.html';
+        }
+
+        function quickFillFinancials() {
+            document.querySelector('select[name="evictions"]').value = 'no';
+            document.querySelector('select[name="verifiableIncome"]').value = 'yes';
+            document.querySelector('select[name="coapplicants"]').value = 'no';
+        }
+
+        function togglePetDetails() {
+            const petSelect = document.getElementById('petSelect');
+            const petDetails = document.getElementById('petDetails');
+            if (petSelect.value === 'yes') {
+                petDetails.style.display = 'block';
+            } else {
+                petDetails.style.display = 'none';
+            }
+        }
+    </script>
+    <style>
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .option-btn {
+            padding: 8px 12px;
+            background: #f0f0f0;
+            border: 1px solid transparent;
+            border-radius: 0px;
+            /* Enforcing sharp edges per TE style */
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--muted-color);
+            cursor: pointer;
+            transition: all 0.2s;
+            text-transform: uppercase;
+        }
+
+        .option-btn:hover {
+            background: #e0e0e0;
+            color: var(--text-color);
+        }
+
+        .option-btn.active {
+            background: var(--text-color);
+            color: var(--bg-color);
+            border-color: var(--text-color);
+        }
+
+        .quick-fill-btn {
+            width: 100%;
+            padding: 10px;
+            background: var(--text-color);
+            border: 1px solid var(--text-color);
+            color: var(--bg-color);
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .quick-fill-btn:hover {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+            color: white;
+        }
+    </style>
+</body>
+
+</html>
