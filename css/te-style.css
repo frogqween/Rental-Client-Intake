@@ -53,6 +53,25 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../assets/home pic.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+}
+
+.left-panel .hero-title {
+    color: white;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.left-panel .description {
+    color: white;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+}
+
+.left-panel .badge {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .right-panel {
@@ -314,7 +333,7 @@ textarea {
 
 /* Sidebar for Form */
 .sidebar {
-    width: 300px;
+    width: 350px;
     background: #f0f0f0;
     border-right: 1px solid var(--border-color);
     padding: 40px;
