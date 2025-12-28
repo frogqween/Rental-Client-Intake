@@ -158,10 +158,12 @@
                             <p
                                 style="font-size: 12px; color: var(--muted-color); margin-bottom: 15px; line-height: 1.5;">
                                 By proceeding, you acknowledge receiving and reading the
-                                <a href="https://drive.google.com/file/d/1u2EJvtSX3Elcmi4ELoVVth95JSKp9yXb/view" target="_blank"
+                                <a href="https://drive.google.com/file/d/1u2EJvtSX3Elcmi4ELoVVth95JSKp9yXb/view"
+                                    target="_blank"
                                     style="color: var(--text-color); font-weight: 700; text-decoration: none;">Consumer
                                     Notice</a> and
-                                <a href="https://docs.google.com/document/d/1eR_AeiNUdRsymFq4H6-2VZ9ypAXlJ6dF4_ZCWw6Wj0Q/edit?usp=sharing" target="_blank"
+                                <a href="https://docs.google.com/document/d/1eR_AeiNUdRsymFq4H6-2VZ9ypAXlJ6dF4_ZCWw6Wj0Q/edit?usp=sharing"
+                                    target="_blank"
                                     style="color: var(--text-color); font-weight: 700; text-decoration: none;">Application
                                     Criteria</a>.
                             </p>
@@ -192,12 +194,11 @@
                         <div class="input-group">
                             <label class="input-label">Contact Method <span
                                     style="color: var(--accent-color);">*</span></label>
-                            <select name="preferredContact" required
-                                style="width: 100%; padding: 12px; border: 1px solid var(--border-color); background: var(--input-bg); outline: none;">
-                                <option value="">SELECT METHOD...</option>
-                                <option value="email">EMAIL</option>
-                                <option value="phone">PHONE call</option>
-                                <option value="text">TEXT message</option>
+                            <select name="preferredContact" required>
+                                <option value="">select method...</option>
+                                <option value="email">email</option>
+                                <option value="phone">phone call</option>
+                                <option value="text">text message</option>
                             </select>
                         </div>
 
@@ -298,8 +299,7 @@
                         <div style="display: flex; gap: 20px;">
                             <div class="input-group" style="flex: 1;">
                                 <label class="input-label">Target Move-in Date</label>
-                                <input type="date" name="moveInDate"
-                                    style="width: 100%; padding: 11px; border: 1px solid var(--border-color);" required>
+                                <input type="date" name="moveInDate" required>
                             </div>
                         </div>
 
@@ -359,7 +359,8 @@
                             <button type="button" class="btn-submit"
                                 style="background: transparent; color: var(--text-color); border: 1px solid var(--border-color); flex: 1;"
                                 onclick="prevSection()">Back</button>
-                            <button type="button" class="btn-submit" style="flex: 2;" onclick="nextSection()">Continue</button>
+                            <button type="button" class="btn-submit" style="flex: 2;"
+                                onclick="nextSection()">Continue</button>
                         </div>
                     </div>
 
@@ -380,49 +381,45 @@
                         <div class="input-group">
                             <label class="input-label">Evictions (4 yrs)? <span
                                     style="color: var(--accent-color);">*</span></label>
-                            <select name="evictions"
-                                style="width: 100%; padding: 12px; border: 1px solid var(--border-color); background: var(--input-bg); outline: none;">
-                                <option value="">SELECT...</option>
-                                <option value="no">No</option>
-                                <option value="yes">Yes</option>
+                            <select name="evictions">
+                                <option value="">select...</option>
+                                <option value="no">no</option>
+                                <option value="yes">yes</option>
                             </select>
                         </div>
 
                         <div class="input-group">
                             <label class="input-label">Income 3x rent? <span
                                     style="color: var(--accent-color);">*</span></label>
-                            <select name="verifiableIncome"
-                                style="width: 100%; padding: 12px; border: 1px solid var(--border-color); background: var(--input-bg); outline: none;">
-                                <option value="">SELECT...</option>
-                                <option value="yes">Yes</option>
-                                <option value="no">No</option>
-                                <option value="close">Close</option>
+                            <select name="verifiableIncome">
+                                <option value="">select...</option>
+                                <option value="yes">yes</option>
+                                <option value="no">no</option>
+                                <option value="close">close</option>
                             </select>
                         </div>
 
                         <div class="input-group">
                             <label class="input-label">Credit Score <span
                                     style="color: var(--accent-color);">*</span></label>
-                            <select name="creditScore"
-                                style="width: 100%; padding: 12px; border: 1px solid var(--border-color); background: var(--input-bg); outline: none;">
-                                <option value="">SELECT...</option>
-                                <option value="excellent">Excellent (740+)</option>
-                                <option value="great">Great (680-739)</option>
-                                <option value="good">Good (620-679)</option>
-                                <option value="fair">Fair (580-619)</option>
-                                <option value="poor">Poor (<580)< /option>
-                                <option value="unknown">Unknown</option>
+                            <select name="creditScore">
+                                <option value="">select...</option>
+                                <option value="excellent">excellent (740+)</option>
+                                <option value="great">great (680-739)</option>
+                                <option value="good">good (620-679)</option>
+                                <option value="fair">fair (580-619)</option>
+                                <option value="poor">poor (<580)< /option>
+                                <option value="unknown">unknown</option>
                             </select>
                         </div>
 
                         <div class="input-group">
                             <label class="input-label">Co-applicants? <span
                                     style="color: var(--accent-color);">*</span></label>
-                            <select name="coapplicants"
-                                style="width: 100%; padding: 12px; border: 1px solid var(--border-color); background: var(--input-bg); outline: none;">
-                                <option value="">SELECT...</option>
-                                <option value="no">No, just me</option>
-                                <option value="yes">Yes</option>
+                            <select name="coapplicants">
+                                <option value="">select...</option>
+                                <option value="no">no, just me</option>
+                                <option value="yes">yes</option>
                             </select>
                         </div>
 
@@ -444,10 +441,9 @@
 
                         <div class="input-group">
                             <label class="input-label">Pets?</label>
-                            <select name="pets" id="petSelect" onchange="togglePetDetails()"
-                                style="width: 100%; padding: 12px; border: 1px solid var(--border-color); background: var(--input-bg); outline: none;">
-                                <option value="no">No pets</option>
-                                <option value="yes">Yes</option>
+                            <select name="pets" id="petSelect" onchange="togglePetDetails()">
+                                <option value="no">no pets</option>
+                                <option value="yes">yes</option>
                             </select>
                             <div id="petDetails" style="display: none; margin-top: 10px;">
                                 <input type="text" name="petDetails" placeholder="TYPE/BREED/WEIGHT...">
