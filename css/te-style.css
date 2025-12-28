@@ -175,32 +175,14 @@ h3 {
     color: white;
 }
 
-.card-link:hover .icon-box {
-    border-color: white;
-    color: white;
-}
 
 .card-link:hover .card-meta,
 .card-link:hover .description-small {
     color: rgba(255, 255, 255, 0.8);
 }
 
-.card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+.card-body {
     margin-bottom: 30px;
-}
-
-.icon-box {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid var(--border-color);
-    color: var(--text-color);
-    transition: all 0.2s;
 }
 
 .card-meta {
