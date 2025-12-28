@@ -41,7 +41,7 @@
             transition: all 0.2s;
         }
 
-        .nav-item:hover {
+        .nav-item:hover:not(.disabled) {
             background: rgba(0, 0, 0, 0.05);
         }
 
@@ -50,6 +50,24 @@
             border-left-color: var(--accent-color);
             margin-right: -1px;
             z-index: 10;
+        }
+
+        .nav-item.completed {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        .nav-item.completed .nav-title {
+            color: white;
+        }
+
+        .nav-item.disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .nav-item.disabled .nav-title {
+            color: var(--muted-color);
         }
 
         .nav-label {
@@ -102,16 +120,16 @@
                 </div>
 
                 <nav style="flex: 1; border-top: 1px solid var(--border-color);">
-                    <button class="nav-item active" onclick="switchSection(1)">
+                    <button class="nav-item active" onclick="switchSection(1)" data-section="1">
                         <div class="nav-title">PERSONAL INFO</div>
                     </button>
-                    <button class="nav-item" onclick="switchSection(2)">
+                    <button class="nav-item disabled" onclick="switchSection(2)" data-section="2">
                         <div class="nav-title">PROPERTY REQUIREMENTS</div>
                     </button>
-                    <button class="nav-item" onclick="switchSection(3)">
+                    <button class="nav-item disabled" onclick="switchSection(3)" data-section="3">
                         <div class="nav-title">FINANCIAL & BACKGROUND</div>
                     </button>
-                    <button class="nav-item" onclick="switchSection(4)">
+                    <button class="nav-item disabled" onclick="switchSection(4)" data-section="4">
                         <div class="nav-title">ADDITIONAL INFO</div>
                     </button>
                 </nav>
@@ -500,16 +518,38 @@
     <script>
         let currentSection = 1;
         const totalSections = 4;
+        const completedSections = new Set();
 
         function switchSection(step) {
+            const navItem = document.querySelector(`.nav-item[data-section="${step}"]`);
+
+            // Prevent switching to disabled sections
+            if (navItem && navItem.classList.contains('disabled')) {
+                return;
+            }
+
             document.querySelectorAll('.form-section').forEach(el => el.classList.remove('active'));
             document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
 
             document.getElementById(`section-${step}`).classList.add('active');
-            const navItems = document.querySelectorAll('.nav-item');
-            if (navItems[step - 1]) navItems[step - 1].classList.add('active');
+            if (navItem) navItem.classList.add('active');
 
             currentSection = step;
+        }
+
+        function unlockSection(sectionNumber) {
+            const navItem = document.querySelector(`.nav-item[data-section="${sectionNumber}"]`);
+            if (navItem) {
+                navItem.classList.remove('disabled');
+            }
+        }
+
+        function markSectionCompleted(sectionNumber) {
+            completedSections.add(sectionNumber);
+            const navItem = document.querySelector(`.nav-item[data-section="${sectionNumber}"]`);
+            if (navItem) {
+                navItem.classList.add('completed');
+            }
         }
 
         function toggleOption(btn, inputId, value) {
@@ -548,6 +588,14 @@
                 });
 
                 if (valid) {
+                    // Mark current section as completed
+                    markSectionCompleted(currentSection);
+
+                    // Unlock next section
+                    if (currentSection + 1 <= totalSections) {
+                        unlockSection(currentSection + 1);
+                    }
+
                     switchSection(currentSection + 1);
                 } else if (!valid && !document.querySelector('input[type="hidden"][required]:invalid')) {
                     // Fallback alert primarily for text inputs if not caught above
