@@ -6,6 +6,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quick Contact | Key Legacy Realty</title>
     <link rel="stylesheet" href="css/te-style.css">
+    <style>
+        .quick-layout {
+            display: flex;
+            flex-direction: row;
+            min-height: 80vh;
+        }
+
+        .quick-left {
+            flex: 1;
+            padding: 40px;
+            border-right: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .quick-right {
+            flex: 1;
+            padding: 40px;
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .quick-layout {
+                flex-direction: column;
+            }
+
+            .quick-left {
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+                padding: 30px;
+                min-height: auto;
+            }
+
+            .quick-right {
+                padding: 30px;
+            }
+
+            h1 {
+                font-size: 3rem !important;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -22,22 +64,23 @@
             </div>
         </header>
 
-        <div class="split-layout">
-            <!-- Left Sidebar: Context -->
-            <div class="sidebar">
-                <a href="index.html" class="back-link">
-                    BACK
-                </a>
+        <div class="quick-layout">
 
+            <!-- Left Panel: Typography & Infos -->
+            <div class="quick-left">
+                <a href="index.html" class="back-link" style="margin-bottom: auto;">← BACK</a>
 
-
-                <p class="description-small">
-                    Rapid intake channel. Provide essential coordinates for immediate connection.
-                </p>
+                <div>
+                    <h1 style="font-size: 5rem; line-height: 0.85; margin-bottom: 20px;">QUICK<br>CONTACT</h1>
+                    <p class="description-small" style="max-width: 300px;">
+                        RAPID INTAKE CHANNEL.<br>
+                        PROVIDE ESSENTIAL COORDINATES FOR IMMEDIATE CONNECTION.
+                    </p>
+                </div>
             </div>
 
-            <!-- Right Panel: Form -->
-            <div class="form-panel">
+            <!-- Right Panel: The Form -->
+            <div class="quick-right form-panel">
                 <form id="quickForm"
                     onsubmit="event.preventDefault(); alert('Transmission Received. System will process data.'); window.location.href='index.html';">
                     <div class="input-group">
@@ -57,7 +100,7 @@
 
                     <div class="input-group">
                         <label class="input-label">Requirements</label>
-                        <textarea placeholder="SPECIFY TARGET PARAMS..." required></textarea>
+                        <textarea placeholder="SPECIFY TARGET PARAMS..." required style="height: 150px;"></textarea>
                     </div>
 
                     <div style="margin-bottom: 20px; display: flex; gap: 10px;">
