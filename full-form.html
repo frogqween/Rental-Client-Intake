@@ -147,6 +147,46 @@
                             <h2 style="margin-top: 10px; font-size: 24px;">PERSONAL INFO</h2>
                         </div>
 
+                        <div class="input-group">
+                            <label class="input-label">Full Name <span
+                                    style="color: var(--accent-color);">*</span></label>
+                            <input type="text" name="fullName" placeholder="John Smith" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input-label">Phone <span style="color: var(--accent-color);">*</span></label>
+                            <input type="tel" name="phone" placeholder="(000) 000-0000" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input-label">Email <span style="color: var(--accent-color);">*</span></label>
+                            <input type="email" name="email" placeholder="john@example.com" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input-label">Contact Method <span
+                                    style="color: var(--accent-color);">*</span></label>
+                            <select name="preferredContact" required>
+                                <option value="">SELECT METHOD...</option>
+                                <option value="email">EMAIL</option>
+                                <option value="phone">PHONE CALL</option>
+                                <option value="text">TEXT MESSAGE</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input-label">Have Agent? <span
+                                    style="color: var(--accent-color);">*</span></label>
+                            <div style="display: flex; gap: 20px; margin-top: 5px;">
+                                <label style="display: flex; align-items: center; gap: 5px; font-size: 12px;">
+                                    <input type="radio" name="agent" value="yes" required> YES
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 5px; font-size: 12px;">
+                                    <input type="radio" name="agent" value="no" required checked> NO
+                                </label>
+                            </div>
+                        </div>
+
                         <!-- Consumer Notice Block -->
                         <div
                             style="padding: 20px; background: rgba(0,0,0,0.03); border: 1px solid var(--border-color); margin-bottom: 30px;">
@@ -168,46 +208,6 @@
                                 <span style="font-size: 12px; font-weight: 700; text-transform: uppercase;">I
                                     acknowledge <span style="color: var(--accent-color);">*</span></span>
                             </label>
-                        </div>
-
-                        <div class="input-group">
-                            <label class="input-label">Full Name <span
-                                    style="color: var(--accent-color);">*</span></label>
-                            <input type="text" name="fullName" placeholder="EX: JOHN DOE" required>
-                        </div>
-
-                        <div class="input-group">
-                            <label class="input-label">Phone <span style="color: var(--accent-color);">*</span></label>
-                            <input type="tel" name="phone" placeholder="(000) 000-0000" required>
-                        </div>
-
-                        <div class="input-group">
-                            <label class="input-label">Email <span style="color: var(--accent-color);">*</span></label>
-                            <input type="email" name="email" placeholder="USER@DOMAIN.COM" required>
-                        </div>
-
-                        <div class="input-group">
-                            <label class="input-label">Contact Method <span
-                                    style="color: var(--accent-color);">*</span></label>
-                            <select name="preferredContact" required>
-                                <option value="">select method...</option>
-                                <option value="email">email</option>
-                                <option value="phone">phone call</option>
-                                <option value="text">text message</option>
-                            </select>
-                        </div>
-
-                        <div class="input-group">
-                            <label class="input-label">Have Agent? <span
-                                    style="color: var(--accent-color);">*</span></label>
-                            <div style="display: flex; gap: 20px; margin-top: 5px;">
-                                <label style="display: flex; align-items: center; gap: 5px; font-size: 12px;">
-                                    <input type="radio" name="agent" value="yes" required> YES
-                                </label>
-                                <label style="display: flex; align-items: center; gap: 5px; font-size: 12px;">
-                                    <input type="radio" name="agent" value="no" required checked> NO
-                                </label>
-                            </div>
                         </div>
 
                         <button type="button" class="btn-submit" onclick="nextSection()">Continue</button>
@@ -377,9 +377,9 @@
                             <label class="input-label">Evictions (4 yrs)? <span
                                     style="color: var(--accent-color);">*</span></label>
                             <select name="evictions">
-                                <option value="">select...</option>
-                                <option value="no">no</option>
-                                <option value="yes">yes</option>
+                                <option value="">SELECT...</option>
+                                <option value="no">NO</option>
+                                <option value="yes">YES</option>
                             </select>
                         </div>
 
@@ -387,24 +387,10 @@
                             <label class="input-label">Income 3x rent? <span
                                     style="color: var(--accent-color);">*</span></label>
                             <select name="verifiableIncome">
-                                <option value="">select...</option>
-                                <option value="yes">yes</option>
-                                <option value="no">no</option>
-                                <option value="close">close</option>
-                            </select>
-                        </div>
-
-                        <div class="input-group">
-                            <label class="input-label">Credit Score <span
-                                    style="color: var(--accent-color);">*</span></label>
-                            <select name="creditScore">
-                                <option value="">select...</option>
-                                <option value="excellent">excellent (740+)</option>
-                                <option value="great">great (680-739)</option>
-                                <option value="good">good (620-679)</option>
-                                <option value="fair">fair (580-619)</option>
-                                <option value="poor">poor (<580)< /option>
-                                <option value="unknown">unknown</option>
+                                <option value="">SELECT...</option>
+                                <option value="yes">YES</option>
+                                <option value="no">NO</option>
+                                <option value="close">CLOSE</option>
                             </select>
                         </div>
 
@@ -412,9 +398,23 @@
                             <label class="input-label">Co-applicants? <span
                                     style="color: var(--accent-color);">*</span></label>
                             <select name="coapplicants">
-                                <option value="">select...</option>
-                                <option value="no">no, just me</option>
-                                <option value="yes">yes</option>
+                                <option value="">SELECT...</option>
+                                <option value="no">NO, JUST ME</option>
+                                <option value="yes">YES</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input-label">Credit Score <span
+                                    style="color: var(--accent-color);">*</span></label>
+                            <select name="creditScore">
+                                <option value="">SELECT...</option>
+                                <option value="excellent">EXCELLENT (740+)</option>
+                                <option value="great">GREAT (680-739)</option>
+                                <option value="good">GOOD (620-679)</option>
+                                <option value="fair">FAIR (580-619)</option>
+                                <option value="poor">POOR (<580)</option>
+                                <option value="unknown">UNKNOWN</option>
                             </select>
                         </div>
 
@@ -435,11 +435,16 @@
                         </div>
 
                         <div class="input-group">
-                            <label class="input-label">Pets?</label>
-                            <select name="pets" id="petSelect" onchange="togglePetDetails()">
-                                <option value="no">no pets</option>
-                                <option value="yes">yes</option>
-                            </select>
+                            <label class="input-label">Pets? <span
+                                    style="color: var(--accent-color);">*</span></label>
+                            <div style="display: flex; gap: 20px; margin-top: 5px;">
+                                <label style="display: flex; align-items: center; gap: 5px; font-size: 12px;">
+                                    <input type="radio" name="pets" value="yes" onchange="togglePetDetails()" required> YES
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 5px; font-size: 12px;">
+                                    <input type="radio" name="pets" value="no" onchange="togglePetDetails()" required checked> NO
+                                </label>
+                            </div>
                             <div id="petDetails" style="display: none; margin-top: 10px;">
                                 <input type="text" name="petDetails" placeholder="TYPE/BREED/WEIGHT...">
                             </div>
@@ -683,9 +688,9 @@
         }
 
         function togglePetDetails() {
-            const petSelect = document.getElementById('petSelect');
+            const petRadio = document.querySelector('input[name="pets"]:checked');
             const petDetails = document.getElementById('petDetails');
-            if (petSelect.value === 'yes') {
+            if (petRadio && petRadio.value === 'yes') {
                 petDetails.style.display = 'block';
             } else {
                 petDetails.style.display = 'none';
