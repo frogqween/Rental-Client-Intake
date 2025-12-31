@@ -98,19 +98,14 @@
 
                         <div class="input-group">
                             <label class="input-label">Preferred Contact Method</label>
-                            <div style="display: flex; gap: 20px; margin-top: 5px;">
-                                <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
-                                    <input type="radio" name="preferredContact" value="email" required>
-                                    <span style="font-size: 12px;">Email</span>
-                                </label>
-                                <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
-                                    <input type="radio" name="preferredContact" value="text" required>
-                                    <span style="font-size: 12px;">Text Message</span>
-                                </label>
-                                <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
-                                    <input type="radio" name="preferredContact" value="phone" required>
-                                    <span style="font-size: 12px;">Phone Call</span>
-                                </label>
+                            <div class="button-group">
+                                <input type="hidden" name="preferredContact" id="input-contact" required>
+                                <button type="button" class="option-btn"
+                                    onclick="selectSingleOption(this, 'input-contact', 'email')">Email</button>
+                                <button type="button" class="option-btn"
+                                    onclick="selectSingleOption(this, 'input-contact', 'text')">Text Message</button>
+                                <button type="button" class="option-btn"
+                                    onclick="selectSingleOption(this, 'input-contact', 'phone')">Phone Call</button>
                             </div>
                         </div>
 
@@ -524,6 +519,19 @@
 
             // Remove error styling if valid
             if (selectedValues) input.style.borderColor = '';
+        }
+
+        function selectSingleOption(btn, inputId, value) {
+            const parent = btn.parentElement;
+            // Deselect all others
+            parent.querySelectorAll('.option-btn').forEach(b => b.classList.remove('active'));
+
+            // Select clicked
+            btn.classList.add('active');
+
+            const input = document.getElementById(inputId);
+            input.value = value;
+            input.style.borderColor = '';
         }
 
         function nextSection() {
