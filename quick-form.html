@@ -74,12 +74,8 @@
         <div class="quick-layout">
 
             <!-- Left Panel: Typography & Infos -->
-            <div class="quick-left" style="padding: 0;">
-                <a href="index.html" class="nav-item" style="border-left: none;">
-                    Back
-                </a>
-
-                <div style="padding: 40px;">
+            <div class="quick-left">
+                <div>
                     <h1 style="font-size: 5rem; line-height: 0.85; margin-bottom: 20px; text-transform: none;">Quick Contact</h1>
                     <p class="description-small" style="max-width: 300px;">
                         Share a few details and we’ll be in touch shortly.
@@ -90,7 +86,7 @@
             <!-- Right Panel: The Form -->
             <div class="quick-right form-panel">
                 <form id="quickForm"
-                    onsubmit="event.preventDefault(); alert('Transmission Received. System will process data.'); window.location.href='index.html';">
+                    onsubmit="event.preventDefault(); alert('Transmission Received. System will process data.');">
                     <div class="floating-label-group">
                         <input type="text" id="quickFullName" placeholder=" " required>
                         <label for="quickFullName">Full Name</label>

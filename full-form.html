@@ -27,7 +27,6 @@
                 transform: translateY(0);
             }
         }
-
     </style>
 </head>
 
@@ -40,7 +39,8 @@
                 <span class="sub">Philadelphia Rentals</span>
             </div>
             <div style="display: flex; align-items: center; gap: 15px;">
-                <label style="display: flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 700; color: var(--accent-color); cursor: pointer;">
+                <label
+                    style="display: flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 700; color: var(--accent-color); cursor: pointer;">
                     <input type="checkbox" id="devModeToggle" onchange="toggleDevMode()">
                     DEV MODE
                 </label>
@@ -50,21 +50,21 @@
         <div class="split-layout">
             <!-- Left Sidebar: Context -->
             <div class="sidebar" style="padding: 0; display: flex; flex-direction: column;">
-                <a href="index.html" class="nav-item">
-                    Back
-                </a>
-
                 <nav style="flex: 1;">
                     <button class="nav-item active" onclick="switchSection(1)" data-section="1">
+                        <div class="step-number">1</div>
                         <div class="nav-title">Contact Information</div>
                     </button>
                     <button class="nav-item disabled" onclick="switchSection(2)" data-section="2">
+                        <div class="step-number">2</div>
                         <div class="nav-title">Property Preferences</div>
                     </button>
                     <button class="nav-item disabled" onclick="switchSection(3)" data-section="3">
+                        <div class="step-number">3</div>
                         <div class="nav-title">Financial Information</div>
                     </button>
                     <button class="nav-item disabled" onclick="switchSection(4)" data-section="4">
+                        <div class="step-number">4</div>
                         <div class="nav-title">Scheduling &amp; Notes</div>
                     </button>
                 </nav>
@@ -164,33 +164,46 @@
                             <div class="button-group">
                                 <input type="hidden" name="neighborhoods" id="input-neighborhoods" required>
                                 <button type="button" class="option-btn"
-                                    onclick="toggleOption(this, 'input-neighborhoods', 'Center City')">Center City</button>
+                                    onclick="toggleOption(this, 'input-neighborhoods', 'Center City')">Center
+                                    City</button>
                                 <button type="button" class="option-btn"
-                                    onclick="toggleOption(this, 'input-neighborhoods', 'Rittenhouse Square')">Rittenhouse Square</button>
+                                    onclick="toggleOption(this, 'input-neighborhoods', 'Rittenhouse Square')">Rittenhouse
+                                    Square</button>
                                 <button type="button" class="option-btn"
-                                    onclick="toggleOption(this, 'input-neighborhoods', 'Old City / Society Hill')">Old City / Society Hill</button>
+                                    onclick="toggleOption(this, 'input-neighborhoods', 'Old City / Society Hill')">Old
+                                    City / Society Hill</button>
                                 <button type="button" class="option-btn"
-                                    onclick="toggleOption(this, 'input-neighborhoods', 'University City')">University City</button>
+                                    onclick="toggleOption(this, 'input-neighborhoods', 'University City')">University
+                                    City</button>
                                 <button type="button" class="option-btn"
-                                    onclick="toggleOption(this, 'input-neighborhoods', 'Northern Liberties / Fishtown')">Northern Liberties / Fishtown</button>
+                                    onclick="toggleOption(this, 'input-neighborhoods', 'Northern Liberties / Fishtown')">Northern
+                                    Liberties / Fishtown</button>
                                 <button type="button" class="option-btn"
-                                    onclick="toggleOption(this, 'input-neighborhoods', 'Fairmount / Art Museum')">Fairmount / Art Museum</button>
+                                    onclick="toggleOption(this, 'input-neighborhoods', 'Fairmount / Art Museum')">Fairmount
+                                    / Art Museum</button>
                                 <button type="button" class="option-btn"
-                                    onclick="toggleOption(this, 'input-neighborhoods', 'South Philly')">South Philly</button>
+                                    onclick="toggleOption(this, 'input-neighborhoods', 'South Philly')">South
+                                    Philly</button>
                                 <button type="button" class="option-btn"
-                                    onclick="toggleOption(this, 'input-neighborhoods', 'East Passyunk')">East Passyunk</button>
+                                    onclick="toggleOption(this, 'input-neighborhoods', 'East Passyunk')">East
+                                    Passyunk</button>
                                 <button type="button" class="option-btn"
-                                    onclick="toggleOption(this, 'input-neighborhoods', 'Manayunk / Roxborough')">Manayunk / Roxborough</button>
+                                    onclick="toggleOption(this, 'input-neighborhoods', 'Manayunk / Roxborough')">Manayunk
+                                    / Roxborough</button>
                                 <button type="button" class="option-btn"
-                                    onclick="toggleOption(this, 'input-neighborhoods', 'Chestnut Hill')">Chestnut Hill</button>
+                                    onclick="toggleOption(this, 'input-neighborhoods', 'Chestnut Hill')">Chestnut
+                                    Hill</button>
                                 <button type="button" class="option-btn"
                                     onclick="toggleOption(this, 'input-neighborhoods', 'Mt. Airy')">Mt. Airy</button>
                                 <button type="button" class="option-btn"
-                                    onclick="toggleOption(this, 'input-neighborhoods', 'Northeast Philly')">Northeast Philly</button>
+                                    onclick="toggleOption(this, 'input-neighborhoods', 'Northeast Philly')">Northeast
+                                    Philly</button>
                                 <button type="button" class="option-btn"
-                                    onclick="toggleOption(this, 'input-neighborhoods', 'North Philly')">North Philly</button>
+                                    onclick="toggleOption(this, 'input-neighborhoods', 'North Philly')">North
+                                    Philly</button>
                                 <button type="button" class="option-btn"
-                                    onclick="toggleOption(this, 'input-neighborhoods', 'Southwest Philly')">Southwest Philly</button>
+                                    onclick="toggleOption(this, 'input-neighborhoods', 'Southwest Philly')">Southwest
+                                    Philly</button>
                             </div>
                         </div>
 
@@ -202,7 +215,7 @@
                         <!-- Button Group: Budget -->
                         <div class="input-group">
                             <label class="input-label">Monthly Budget</label>
-                            
+
                             <div class="button-group">
                                 <input type="hidden" name="budget" id="input-budget" required>
                                 <button type="button" class="option-btn"
@@ -223,29 +236,62 @@
                         <!-- Button Group: Must-Haves -->
                         <div class="input-group">
                             <label class="input-label">Must-Have Features</label>
-                            
+
                             <div class="button-group">
                                 <input type="hidden" name="nonNegotiables" id="input-negotiables" required>
                                 <button type="button" class="option-btn"
                                     onclick="toggleOption(this, 'input-negotiables', 'Parking')">Parking</button>
                                 <button type="button" class="option-btn"
-                                    onclick="toggleOption(this, 'input-negotiables', 'In-Unit Laundry')">In-Unit Laundry</button>
+                                    onclick="toggleOption(this, 'input-negotiables', 'In-Unit Laundry')">In-Unit
+                                    Laundry</button>
                                 <button type="button" class="option-btn"
-                                    onclick="toggleOption(this, 'input-negotiables', 'Pet Friendly')">Pet Friendly</button>
-                                <button type="button" class="option-btn"
-                                    onclick="toggleOption(this, 'input-negotiables', 'Central Air')">Central Air</button>
+                                    onclick="toggleOption(this, 'input-negotiables', 'Central Air')">Central
+                                    Air</button>
                                 <button type="button" class="option-btn"
                                     onclick="toggleOption(this, 'input-negotiables', 'Dishwasher')">Dishwasher</button>
                                 <button type="button" class="option-btn"
-                                    onclick="toggleOption(this, 'input-negotiables', 'Outdoor Space')">Outdoor Space</button>
+                                    onclick="toggleOption(this, 'input-negotiables', 'Outdoor Space')">Outdoor
+                                    Space</button>
                                 <button type="button" class="option-btn"
                                     onclick="toggleOption(this, 'input-negotiables', 'Gym Access')">Gym Access</button>
                                 <button type="button" class="option-btn"
                                     onclick="toggleOption(this, 'input-negotiables', 'Storage')">Storage</button>
                                 <button type="button" class="option-btn"
-                                    onclick="toggleOption(this, 'input-negotiables', 'Utilities Included')">Utilities Included</button>
+                                    onclick="toggleOption(this, 'input-negotiables', 'Utilities Included')">Utilities
+                                    Included</button>
                                 <button type="button" class="option-btn"
-                                    onclick="toggleOption(this, 'input-negotiables', 'Doorman / Security')">Doorman / Security</button>
+                                    onclick="toggleOption(this, 'input-negotiables', 'Doorman / Security')">Doorman /
+                                    Security</button>
+                            </div>
+                        </div>
+
+                        <!-- Pet Logic -->
+                        <div class="input-group">
+                            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                                <input type="checkbox" name="hasPets" id="hasPetsCheckbox"
+                                    onchange="togglePetOptions()">
+                                <span class="input-label" style="margin: 0;">Pets</span>
+                            </label>
+
+                            <div id="petOptions" style="display: none; margin-top: 15px; transition: all 0.3s ease;">
+                                <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+                                    <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                                        <input type="checkbox" name="petType" value="Cat">
+                                        <span class="input-label" style="margin: 0;">Cat</span>
+                                    </label>
+                                    <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                                        <input type="checkbox" name="petType" value="Dog" id="dogCheckbox"
+                                            onchange="toggleDogOptions()">
+                                        <span class="input-label" style="margin: 0;">Dog</span>
+                                    </label>
+                                </div>
+
+                                <div id="dogOptions" style="display: none; margin-top: 15px;">
+                                    <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                                        <input type="checkbox" name="dogSize" value="Over 50lbs">
+                                        <span class="input-label" style="margin: 0;">Over 50lbs</span>
+                                    </label>
+                                </div>
                             </div>
                         </div>
 
@@ -282,14 +328,15 @@
 
                         <div class="input-group">
                             <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
-                                <input type="checkbox" name="verifiableIncome" id="verifiableIncomeCheckbox" value="yes" required>
+                                <input type="checkbox" name="verifiableIncome" id="verifiableIncomeCheckbox"
+                                    value="yes">
                                 <span class="input-label" style="margin: 0;">Income 3x Monthly Rent</span>
                             </label>
                         </div>
 
                         <div class="floating-label-group">
                             <select name="creditScore" id="creditScore"
-                                onchange="this.dataset.hasValue = this.value ? 'true' : '';">
+                                onchange="this.dataset.hasValue = this.value ? 'true' : '';" required>
                                 <option value="" selected disabled hidden></option>
                                 <option value="excellent">Excellent (740+)</option>
                                 <option value="great">Great (680-739)</option>
@@ -344,11 +391,14 @@
                                 <div class="button-group">
                                     <input type="hidden" name="tourTimes" id="input-tour-times" required>
                                     <button type="button" class="option-btn"
-                                        onclick="toggleOption(this, 'input-tour-times', 'Morning (9-12)')">Morning (9-12)</button>
+                                        onclick="toggleOption(this, 'input-tour-times', 'Morning (9-12)')">Morning
+                                        (9-12)</button>
                                     <button type="button" class="option-btn"
-                                        onclick="toggleOption(this, 'input-tour-times', 'Afternoon (12-5)')">Afternoon (12-5)</button>
+                                        onclick="toggleOption(this, 'input-tour-times', 'Afternoon (12-5)')">Afternoon
+                                        (12-5)</button>
                                     <button type="button" class="option-btn"
-                                        onclick="toggleOption(this, 'input-tour-times', 'Evening (5+)')">Evening (5+)</button>
+                                        onclick="toggleOption(this, 'input-tour-times', 'Evening (5+)')">Evening
+                                        (5+)</button>
                                 </div>
                             </div>
                         </div>
@@ -570,9 +620,39 @@
 
         function handleFinalSubmit(e) {
             e.preventDefault();
+
+            // Validate section 4 fields before submitting
+            const section = document.getElementById('section-4');
+            let valid = true;
+            let firstInvalidField = null;
+
+            // Check hidden inputs (button groups for days and times)
+            const hiddenInputs = section.querySelectorAll('input[type="hidden"][required]');
+            hiddenInputs.forEach(input => {
+                if (!input.value) {
+                    valid = false;
+                    if (!firstInvalidField) firstInvalidField = input;
+                }
+            });
+
+            // Check consent checkbox
+            const consentCheckbox = document.getElementById('consentFull');
+            if (!consentCheckbox.checked) {
+                valid = false;
+                if (!firstInvalidField) firstInvalidField = consentCheckbox;
+            }
+
+            if (!valid) {
+                alert('Please fill out all required fields before submitting.');
+                if (firstInvalidField) {
+                    firstInvalidField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+                return;
+            }
+
             // Here you would gather all form data: const data = new FormData(e.target);
             alert('Application Transmission Successful.\n\nThank you for choosing Key Legacy Realty.');
-            window.location.href = 'index.html';
+            // Form submitted successfully
         }
 
         function quickFillFinancials() {
@@ -584,13 +664,26 @@
             document.getElementById('coapplicantsCheckbox').checked = false;
         }
 
-        function togglePetDetails() {
-            const petsCheckbox = document.getElementById('petsCheckbox');
-            const petDetails = document.getElementById('petDetails');
-            if (petsCheckbox.checked) {
-                petDetails.style.display = 'block';
+        function togglePetOptions() {
+            const hasPets = document.getElementById('hasPetsCheckbox').checked;
+            const petOptions = document.getElementById('petOptions');
+            if (hasPets) {
+                petOptions.style.display = 'block';
             } else {
-                petDetails.style.display = 'none';
+                petOptions.style.display = 'none';
+                // Reset internal state if desired, but hiding is sufficient for now
+                document.getElementById('dogCheckbox').checked = false;
+                toggleDogOptions(); // Ensure dog options are hidden too
+            }
+        }
+
+        function toggleDogOptions() {
+            const isDog = document.getElementById('dogCheckbox').checked;
+            const dogOptions = document.getElementById('dogOptions');
+            if (isDog) {
+                dogOptions.style.display = 'block';
+            } else {
+                dogOptions.style.display = 'none';
             }
         }
     </script>
@@ -653,4 +746,3 @@
 </body>
 
 </html>
-
