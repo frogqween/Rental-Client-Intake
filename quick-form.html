@@ -49,6 +49,7 @@
         }
 
         @media (max-width: 480px) {
+
             .quick-left,
             .quick-right {
                 padding: 20px 15px;
@@ -76,7 +77,8 @@
             <!-- Left Panel: Typography & Infos -->
             <div class="quick-left">
                 <div>
-                    <h1 style="font-size: 5rem; line-height: 0.85; margin-bottom: 20px; text-transform: none;">Quick Contact</h1>
+                    <h1 style="font-size: 5rem; line-height: 0.85; margin-bottom: 20px; text-transform: none;">Quick
+                        Contact</h1>
                     <p class="description-small" style="max-width: 300px;">
                         Share a few details and we’ll be in touch shortly.
                     </p>
@@ -85,8 +87,7 @@
 
             <!-- Right Panel: The Form -->
             <div class="quick-right form-panel">
-                <form id="quickForm"
-                    onsubmit="event.preventDefault(); alert('Transmission Received. System will process data.');">
+                <form id="quickForm" onsubmit="handleQuickSubmit(event)">
                     <div class="floating-label-group">
                         <input type="text" id="quickFullName" placeholder=" " required>
                         <label for="quickFullName">Full Name</label>
@@ -104,14 +105,15 @@
 
                     <div class="input-group">
                         <label class="input-label">What are you looking for?</label>
-                        <textarea placeholder="Neighborhood, bedrooms, move-in timing, or anything important to you" required
-                            style="height: 150px;"></textarea>
+                        <textarea placeholder="Neighborhood, bedrooms, move-in timing, or anything important to you"
+                            required style="height: 150px;"></textarea>
                     </div>
 
-                    <div id="consent-section" style="margin-bottom: 20px; display: none; gap: 10px;">
-                        <input type="checkbox" id="consent" required>
-                        <label for="consent"
-                            style="font-size: 10px; color: var(--muted-color); line-height: 1.4;">
+                    <div id="consent-section"
+                        style="margin-bottom: 20px; display: none; gap: 10px; align-items: flex-start;">
+                        <input type="checkbox" id="consent" required
+                            style="width: 16px; height: 16px; flex-shrink: 0; margin-top: 2px;">
+                        <label for="consent" style="font-size: 10px; color: var(--muted-color); line-height: 1.4;">
                             I agree to be contacted by a member from Key Legacy Realty via call, email, and text. To opt
                             out, you can reply 'stop' at any time or click the unsubscribe link in the emails. Message
                             and data rates may apply. Msg frequency varies. <a
@@ -151,7 +153,28 @@
         inputs.forEach(input => {
             input.addEventListener('input', checkInputs);
         });
+
+        function handleQuickSubmit(e) {
+            e.preventDefault();
+            document.getElementById('submissionOverlay').classList.add('active');
+        }
     </script>
+    <!-- Submission Overlay -->
+    <div id="submissionOverlay" class="submission-overlay">
+        <div class="submission-content">
+            <div class="success-icon">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+            </div>
+            <h2 class="submission-title">You’re all set</h2>
+            <p class="submission-message">Thanks for reaching out to Key Legacy Realty.<br>Our team will be in touch
+                shortly.</p>
+            <button class="btn-submit" onclick="location.reload()" style="max-width: 200px; margin: 0 auto;">Back to
+                Home</button>
+        </div>
+    </div>
 </body>
 
 </html>

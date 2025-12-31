@@ -116,8 +116,8 @@
 
                         <div class="input-group">
                             <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
-                                <input type="checkbox" name="agent" id="agentCheckbox" value="yes">
-                                <span class="input-label" style="margin: 0;">I have a Real Estate Agent</span>
+                                <input type="checkbox" name="agent" id="agentCheckbox" value="no">
+                                <span class="input-label" style="margin: 0;">I do not have a real estate agent</span>
                             </label>
                         </div>
 
@@ -651,8 +651,12 @@
             }
 
             // Here you would gather all form data: const data = new FormData(e.target);
-            alert('Application Transmission Successful.\n\nThank you for choosing Key Legacy Realty.');
-            // Form submitted successfully
+
+            // Show overlay
+            document.getElementById('submissionOverlay').classList.add('active');
+
+            // Optional: reset form
+            // e.target.reset();
         }
 
         function quickFillFinancials() {
@@ -743,6 +747,22 @@
             color: white;
         }
     </style>
+    <!-- Submission Overlay -->
+    <div id="submissionOverlay" class="submission-overlay">
+        <div class="submission-content">
+            <div class="success-icon">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+            </div>
+            <h2 class="submission-title">You’re all set</h2>
+            <p class="submission-message">Thanks for reaching out to Key Legacy Realty.<br>Our team will be in touch
+                shortly.</p>
+            <button class="btn-submit" onclick="location.reload()" style="max-width: 200px; margin: 0 auto;">Back to
+                Home</button>
+        </div>
+    </div>
 </body>
 
 </html>
