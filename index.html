@@ -81,6 +81,34 @@
                             <h2 style="margin-top: 10px; font-size: 24px;">Contact Information</h2>
                         </div>
 
+                        <!-- Consent Block -->
+                        <div
+                            style="padding: 20px; background: rgba(0,0,0,0.03); border: 1px solid var(--border-color); margin-bottom: 20px;">
+                            <label class="input-label" style="margin-bottom: 10px; display: block;">Consent</label>
+                            <p
+                                style="font-size: 12px; color: var(--muted-color); margin-bottom: 15px; line-height: 1.6;">
+                                By continuing, I confirm that the information provided is accurate, that I've read and
+                                received the
+                                <a href="assets/pdf/Consumer%20Notice.pdf" target="_blank"
+                                    style="color: var(--accent-color); font-weight: 700; text-decoration: underline; padding: 2px 4px; margin: -2px -4px;">Consumer
+                                    Notice</a> and
+                                <a href="assets/pdf/KLR%20Application%20Criteria%20%5B12.1.2025%5D.pdf" target="_blank"
+                                    style="color: var(--accent-color); font-weight: 700; text-decoration: underline; padding: 2px 4px; margin: -2px -4px;">Application
+                                    Criteria</a>, and that Key Legacy Realty may use this information to schedule tours.
+                            </p>
+                            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                                <input type="checkbox" id="consentSection1" required>
+                                <span style="font-size: 13px;">I agree</span>
+                            </label>
+                        </div>
+
+                        <div class="input-group">
+                            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                                <input type="checkbox" name="agent" id="agentCheckbox" value="no" required>
+                                <span class="input-label" style="margin: 0;">I do not have a real estate agent</span>
+                            </label>
+                        </div>
+
                         <div class="floating-label-group">
                             <input type="text" name="firstName" id="firstName" placeholder=" " required>
                             <label for="firstName">First Name</label>
@@ -114,13 +142,6 @@
                             </div>
                         </div>
 
-                        <div class="input-group">
-                            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
-                                <input type="checkbox" name="agent" id="agentCheckbox" value="no">
-                                <span class="input-label" style="margin: 0;">I do not have a real estate agent</span>
-                            </label>
-                        </div>
-
                         <button type="button" class="btn-submit" onclick="nextSection()">Continue</button>
                     </div>
 
@@ -133,13 +154,19 @@
 
                         <div class="input-group">
                             <label class="input-label">Property Type</label>
-                            <input type="text" name="propertyInterest" placeholder="Apartment, House, Studio" required>
+                            <div class="button-group preference-grid">
+                                <input type="hidden" name="propertyInterest" id="input-propertyInterest" required>
+                                <button type="button" class="option-btn"
+                                    onclick="toggleOption(this, 'input-propertyInterest', 'Apartment')">Apartment</button>
+                                <button type="button" class="option-btn"
+                                    onclick="toggleOption(this, 'input-propertyInterest', 'House')">House</button>
+                            </div>
                         </div>
 
                         <!-- Button Group: Bedrooms -->
                         <div class="input-group">
                             <label class="input-label">Bedrooms</label>
-                            <div class="button-group" id="bedroom-group">
+                            <div class="button-group preference-grid" id="bedroom-group">
                                 <!-- JS will populate hidden input -->
                                 <input type="hidden" name="bedrooms" id="input-bedrooms" required>
 
@@ -161,7 +188,7 @@
                         <!-- Button Group: Neighborhoods -->
                         <div class="input-group">
                             <label class="input-label">Preferred Neighborhoods</label>
-                            <div class="button-group">
+                            <div class="button-group preference-grid">
                                 <input type="hidden" name="neighborhoods" id="input-neighborhoods" required>
                                 <button type="button" class="option-btn"
                                     onclick="toggleOption(this, 'input-neighborhoods', 'Center City')">Center
@@ -216,10 +243,8 @@
                         <div class="input-group">
                             <label class="input-label">Monthly Budget</label>
 
-                            <div class="button-group">
+                            <div class="button-group preference-grid">
                                 <input type="hidden" name="budget" id="input-budget" required>
-                                <button type="button" class="option-btn"
-                                    onclick="toggleOption(this, 'input-budget', '$800-$1,000')">$800-$1,000</button>
                                 <button type="button" class="option-btn"
                                     onclick="toggleOption(this, 'input-budget', '$1,000-$1,200')">$1,000-$1,200</button>
                                 <button type="button" class="option-btn"
@@ -237,7 +262,7 @@
                         <div class="input-group">
                             <label class="input-label">Must-Have Features</label>
 
-                            <div class="button-group">
+                            <div class="button-group preference-grid">
                                 <input type="hidden" name="nonNegotiables" id="input-negotiables" required>
                                 <button type="button" class="option-btn"
                                     onclick="toggleOption(this, 'input-negotiables', 'Parking')">Parking</button>
@@ -274,23 +299,25 @@
                             </label>
 
                             <div id="petOptions" style="display: none; margin-top: 15px; transition: all 0.3s ease;">
-                                <div style="display: flex; gap: 20px; flex-wrap: wrap;">
-                                    <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
-                                        <input type="checkbox" name="petType" value="Cat">
-                                        <span class="input-label" style="margin: 0;">Cat</span>
-                                    </label>
-                                    <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
-                                        <input type="checkbox" name="petType" value="Dog" id="dogCheckbox"
-                                            onchange="toggleDogOptions()">
-                                        <span class="input-label" style="margin: 0;">Dog</span>
-                                    </label>
+                                <div class="preference-grid" style="margin-bottom: 20px;">
+                                    <div class="floating-label-group" style="margin-bottom: 0;">
+                                        <input type="number" name="catCount" id="catCount" placeholder=" " min="0">
+                                        <label for="catCount">Cats (Qty)</label>
+                                    </div>
+                                    <div class="floating-label-group" style="margin-bottom: 0;">
+                                        <input type="number" name="dogCount" id="dogCount" placeholder=" " min="0"
+                                            oninput="toggleDogDetails()">
+                                        <label for="dogCount">Dogs (Qty)</label>
+                                    </div>
                                 </div>
 
-                                <div id="dogOptions" style="display: none; margin-top: 15px;">
-                                    <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
-                                        <input type="checkbox" name="dogSize" value="Over 50lbs">
-                                        <span class="input-label" style="margin: 0;">Over 50lbs</span>
-                                    </label>
+                                <div id="dogOptions" style="display: none;">
+                                    <div class="preference-grid">
+                                        <div class="floating-label-group" style="margin-bottom: 0;">
+                                            <input type="text" name="dogDetails" id="dogDetailsInput" placeholder=" ">
+                                            <label for="dogDetailsInput">Dog Weight Approx</label>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -313,25 +340,36 @@
                         </div>
 
                         <div class="input-group">
-                            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
-                                <input type="checkbox" name="coapplicants" id="coapplicantsCheckbox" value="yes">
-                                <span class="input-label" style="margin: 0;">Applying with Others</span>
-                            </label>
+                            <label class="input-label">Applying with Others</label>
+                            <div class="button-group">
+                                <input type="hidden" name="coapplicants" id="input-coapplicants" required>
+                                <button type="button" class="option-btn"
+                                    onclick="selectSingleOption(this, 'input-coapplicants', 'yes')">Yes</button>
+                                <button type="button" class="option-btn"
+                                    onclick="selectSingleOption(this, 'input-coapplicants', 'no')">No</button>
+                            </div>
                         </div>
 
                         <div class="input-group">
-                            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
-                                <input type="checkbox" name="evictions" id="evictionsCheckbox" value="yes">
-                                <span class="input-label" style="margin: 0;">Evictions in Past 4 Years</span>
-                            </label>
+                            <label class="input-label">Evictions in Past 4 Years</label>
+                            <div class="button-group">
+                                <input type="hidden" name="evictions" id="input-evictions" required>
+                                <button type="button" class="option-btn"
+                                    onclick="selectSingleOption(this, 'input-evictions', 'yes')">Yes</button>
+                                <button type="button" class="option-btn"
+                                    onclick="selectSingleOption(this, 'input-evictions', 'no')">No</button>
+                            </div>
                         </div>
 
                         <div class="input-group">
-                            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
-                                <input type="checkbox" name="verifiableIncome" id="verifiableIncomeCheckbox"
-                                    value="yes">
-                                <span class="input-label" style="margin: 0;">Income 3x Monthly Rent</span>
-                            </label>
+                            <label class="input-label">Income 3x Monthly Rent</label>
+                            <div class="button-group">
+                                <input type="hidden" name="verifiableIncome" id="input-verifiableIncome" required>
+                                <button type="button" class="option-btn"
+                                    onclick="selectSingleOption(this, 'input-verifiableIncome', 'yes')">Yes</button>
+                                <button type="button" class="option-btn"
+                                    onclick="selectSingleOption(this, 'input-verifiableIncome', 'no')">No</button>
+                            </div>
                         </div>
 
                         <div class="floating-label-group">
@@ -406,27 +444,6 @@
                         <div class="input-group">
                             <label class="input-label">Additional Notes</label>
                             <textarea name="notes" placeholder="Is there anything else we should know?"></textarea>
-                        </div>
-
-                        <!-- Consent Block -->
-                        <div
-                            style="padding: 20px; background: rgba(0,0,0,0.03); border: 1px solid var(--border-color); margin-bottom: 30px;">
-                            <label class="input-label" style="margin-bottom: 10px; display: block;">Consent</label>
-                            <p
-                                style="font-size: 12px; color: var(--muted-color); margin-bottom: 15px; line-height: 1.5;">
-                                By continuing, I confirm that the information provided is accurate, that I’ve read and
-                                received the
-                                <a href="assets/pdf/Consumer%20Notice.pdf" target="_blank"
-                                    style="color: var(--accent-color); font-weight: 700; text-decoration: underline;">Consumer
-                                    Notice</a> and
-                                <a href="assets/pdf/KLR%20Application%20Criteria%20%5B12.1.2025%5D.pdf" target="_blank"
-                                    style="color: var(--accent-color); font-weight: 700; text-decoration: underline;">Application
-                                    Criteria</a>, and that Key Legacy Realty may use this information to schedule tours.
-                            </p>
-                            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-                                <input type="checkbox" id="consentFull" required>
-                                <span style="font-size: 12px;">I agree</span>
-                            </label>
                         </div>
 
                         <div style="display: flex; gap: 10px;">
@@ -648,13 +665,6 @@
                 }
             });
 
-            // Check consent checkbox
-            const consentCheckbox = document.getElementById('consentFull');
-            if (!consentCheckbox.checked) {
-                valid = false;
-                if (!firstInvalidField) firstInvalidField = consentCheckbox;
-            }
-
             if (!valid) {
                 alert('Please fill out all required fields before submitting.');
                 if (firstInvalidField) {
@@ -688,19 +698,27 @@
                 petOptions.style.display = 'block';
             } else {
                 petOptions.style.display = 'none';
-                // Reset internal state if desired, but hiding is sufficient for now
-                document.getElementById('dogCheckbox').checked = false;
-                toggleDogOptions(); // Ensure dog options are hidden too
+
+                // Clear values when hiding
+                document.getElementById('catCount').value = '';
+                document.getElementById('dogCount').value = '';
+                document.getElementById('dogDetailsInput').value = '';
+                toggleDogDetails();
             }
         }
 
-        function toggleDogOptions() {
-            const isDog = document.getElementById('dogCheckbox').checked;
+        function toggleDogDetails() {
+            const dogCount = document.getElementById('dogCount').value;
             const dogOptions = document.getElementById('dogOptions');
-            if (isDog) {
+
+            // Show details if dog count is > 0
+            if (dogCount && parseInt(dogCount) > 0) {
                 dogOptions.style.display = 'block';
+                // Make required if visible
+                document.getElementById('dogDetailsInput').setAttribute('required', 'required');
             } else {
                 dogOptions.style.display = 'none';
+                document.getElementById('dogDetailsInput').removeAttribute('required');
             }
         }
     </script>
@@ -711,6 +729,14 @@
             gap: 8px;
         }
 
+        .preference-grid {
+            display: grid !important;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 5px;
+            width: 100%;
+        }
+
+        /* Default Button Style (Restored) */
         .option-btn {
             padding: 8px 12px;
             background: #f0f0f0;
@@ -723,6 +749,20 @@
             cursor: pointer;
             transition: all 0.2s;
             text-transform: none;
+        }
+
+        /* Specific Sizing ONLY for Property Preferences */
+        .preference-grid .option-btn {
+            padding: 10px 8px;
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            line-height: 1.25;
+            min-height: 44px;
+            height: 100%;
+            width: 100%;
         }
 
         .option-btn:hover {
@@ -758,6 +798,59 @@
             background: var(--accent-color);
             border-color: var(--accent-color);
             color: white;
+        }
+
+        /* Make Yes/No buttons equal width */
+        .button-group .option-btn {
+            min-width: 80px;
+        }
+
+        .preference-grid .option-btn {
+            min-width: 0;
+            /* Let grid handle width */
+            width: 100%;
+        }
+
+        /* Center labels vertically inside preference grid inputs */
+        .preference-grid .floating-label-group label {
+            top: 50%;
+            transform: translateY(-50%);
+            left: 12px;
+            /* Keep left alignment */
+            width: auto;
+            text-align: left;
+        }
+
+        /* Float label when focused or has value */
+        .preference-grid .floating-label-group input:focus+label,
+        .preference-grid .floating-label-group input:not(:placeholder-shown)+label,
+        .preference-grid .floating-label-group select:focus+label,
+        .preference-grid .floating-label-group select[data-has-value="true"]+label {
+            top: 4px;
+            transform: none;
+        }
+
+        @media (max-width: 600px) {
+            .preference-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            h2 {
+                font-size: 20px !important;
+            }
+
+            .badge {
+                font-size: 11px;
+            }
+        }
+
+        /* Very small screens */
+        @media (max-width: 360px) {
+            .form-panel {
+                padding: 15px;
+            }
         }
     </style>
     <!-- Submission Overlay -->
