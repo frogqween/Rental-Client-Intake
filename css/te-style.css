@@ -47,39 +47,6 @@ body {
     border-top: 1px solid var(--border-color);
 }
 
-.left-panel {
-    flex: 1;
-    padding: 60px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../assets/images/home-pic.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    color: white;
-}
-
-.left-panel .hero-title {
-    color: white;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
-}
-
-.left-panel .description {
-    color: white;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
-}
-
-.left-panel .badge {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-}
-
-.right-panel {
-    width: 450px;
-    border-left: 1px solid var(--border-color);
-    display: flex;
-    flex-direction: column;
-}
 
 /* Header */
 header {
@@ -131,11 +98,6 @@ h3 {
     margin: 0;
 }
 
-.hero-title {
-    font-size: 4rem;
-    line-height: 0.9;
-    margin: 30px 0;
-}
 
 .badge {
     display: inline-block;
@@ -153,70 +115,6 @@ h3 {
     max-width: 400px;
 }
 
-/* Cards */
-.card-link {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    text-decoration: none;
-    color: var(--text-color);
-    padding: 40px;
-    border-bottom: 1px solid var(--border-color);
-    transition: all 0.2s;
-    background: var(--bg-color);
-}
-
-.card-link:last-child {
-    border-bottom: none;
-}
-
-.card-link:hover {
-    background-color: var(--accent-color);
-    color: white;
-}
-
-
-.card-link:hover .card-meta,
-.card-link:hover .description-small {
-    color: rgba(255, 255, 255, 0.8);
-}
-
-.card-body {
-    margin-top: 80px;
-    margin-bottom: 30px;
-}
-
-.card-meta {
-    font-size: 10px;
-    text-transform: uppercase;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    color: var(--muted-color);
-}
-
-.card-title {
-    font-size: 32px;
-    margin-bottom: 15px;
-}
-
-.description-small {
-    font-size: 12px;
-    color: var(--muted-color);
-    margin-bottom: 20px;
-}
-
-.action-label {
-    margin-top: auto;
-    font-weight: 700;
-    font-size: 14px;
-    text-transform: uppercase;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    letter-spacing: 0.12em;
-}
 
 /* Form Styles */
 .form-panel {
@@ -555,13 +453,6 @@ footer {
         border-right: none;
     }
 
-    .left-panel {
-        padding: 40px 30px;
-    }
-
-    .right-panel {
-        width: 400px;
-    }
 
     .sidebar {
         width: 280px;
@@ -592,22 +483,12 @@ footer {
         flex-direction: column;
     }
 
-    .right-panel,
-    .left-panel,
     .sidebar {
         width: 100%;
         border-left: none;
         border-right: none;
         border-top: 1px solid var(--border-color);
-    }
-
-    .left-panel {
-        padding: 30px 20px;
-    }
-
-    .sidebar {
         padding: 0;
-        border-right: none;
         border-bottom: 1px solid var(--border-color);
     }
 
@@ -659,13 +540,6 @@ footer {
         padding: 20px;
     }
 
-    .hero-title {
-        font-size: 2.5rem;
-    }
-
-    .card-link {
-        padding: 30px 20px;
-    }
 
     footer {
         padding: 15px;
@@ -703,27 +577,9 @@ footer {
         height: 6px;
     }
 
-    .left-panel,
     .sidebar,
     .form-panel {
         padding: 20px 15px;
-    }
-
-    .hero-title {
-        font-size: 2rem;
-        margin: 20px 0;
-    }
-
-    .card-link {
-        padding: 25px 15px;
-    }
-
-    .card-title {
-        font-size: 20px;
-    }
-
-    .description-small {
-        font-size: 11px;
     }
 
     input[type="text"],
@@ -756,7 +612,6 @@ footer {
     /* Touch device optimizations */
     .btn-submit,
     .back-link,
-    .card-link,
     .option-btn,
     .nav-item {
         min-height: 44px;
@@ -771,16 +626,6 @@ footer {
     }
 }
 
-/* Landscape mobile */
-@media (max-width: 768px) and (orientation: landscape) {
-    .hero-title {
-        font-size: 2rem;
-    }
-
-    .left-panel {
-        padding: 20px;
-    }
-}
 
 /* Button group mobile optimization */
 @media (max-width: 640px) {
@@ -793,10 +638,6 @@ footer {
         padding: 8px 12px !important;
     }
 
-    .quick-fill-btn {
-        font-size: 10px !important;
-        padding: 10px !important;
-    }
 }
 
 /* Print styles */

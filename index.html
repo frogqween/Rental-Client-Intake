@@ -682,15 +682,6 @@
             // e.target.reset();
         }
 
-        function quickFillFinancials() {
-            // Evictions checkbox: unchecked = no evictions
-            document.getElementById('evictionsCheckbox').checked = false;
-            // Income 3x: Yes selected
-            document.querySelector('input[name="verifiableIncome"][value="yes"]').checked = true;
-            // Co-applicants checkbox: unchecked = just me
-            document.getElementById('coapplicantsCheckbox').checked = false;
-        }
-
         function togglePetOptions() {
             const hasPets = document.getElementById('hasPetsCheckbox').checked;
             const petOptions = document.getElementById('petOptions');
@@ -774,30 +765,6 @@
             background: var(--text-color);
             color: var(--bg-color);
             border-color: var(--text-color);
-        }
-
-        .quick-fill-btn {
-            width: 100%;
-            padding: 10px;
-            background: var(--text-color);
-            border: 1px solid var(--text-color);
-            color: var(--bg-color);
-            font-size: 10px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            cursor: pointer;
-            transition: all 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .quick-fill-btn:hover {
-            background: var(--accent-color);
-            border-color: var(--accent-color);
-            color: white;
         }
 
         /* Make Yes/No buttons equal width */
