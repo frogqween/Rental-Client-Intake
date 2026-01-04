@@ -181,7 +181,8 @@
                                 <button type="button" class="option-btn"
                                     onclick="selectSingleOption(this, 'input-bedrooms', '4 Bedroom')">4 Bedroom</button>
                                 <button type="button" class="option-btn"
-                                    onclick="selectSingleOption(this, 'input-bedrooms', '5+ Bedrooms')">5+ Bedrooms</button>
+                                    onclick="selectSingleOption(this, 'input-bedrooms', '5+ Bedrooms')">5+
+                                    Bedrooms</button>
                             </div>
                         </div>
 
@@ -376,12 +377,12 @@
                             <select name="creditScore" id="creditScore"
                                 onchange="this.dataset.hasValue = this.value ? 'true' : '';" required>
                                 <option value="" selected disabled hidden></option>
-                                <option value="excellent">Excellent (740+)</option>
-                                <option value="great">Great (680-739)</option>
-                                <option value="good">Good (620-679)</option>
-                                <option value="fair">Fair (580-619)</option>
-                                <option value="poor">Poor (&lt;580)</option>
-                                <option value="unknown">Unknown</option>
+                                <option value="Excellent (740+)">Excellent (740+)</option>
+                                <option value="Great (680-739)">Great (680-739)</option>
+                                <option value="Good (620-679)">Good (620-679)</option>
+                                <option value="Fair (580-619)">Fair (580-619)</option>
+                                <option value="Poor (<580)">Poor (&lt;580)</option>
+                                <option value="Unknown">Unknown</option>
                             </select>
                             <label for="creditScore">Credit Score</label>
                         </div>
@@ -461,6 +462,8 @@
 
     <script>
         let currentSection = 1;
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx-wdSRYX_6qhR4DZcSlORtatXOEzdwiTQVnV7nVWwHVgF9_EjlS-3V__-qUEV3XAby/exec';
+
         const totalSections = 4;
         const completedSections = new Set();
         let devMode = false;
@@ -536,7 +539,11 @@
             const parent = btn.parentElement;
             const activeBtns = parent.querySelectorAll('.option-btn.active');
 
-            const selectedValues = Array.from(activeBtns).map(b => b.textContent.trim()).join(', ');
+            // Use innerText to respect visible text and regex to clean whitespace/newlines
+            const selectedValues = Array.from(activeBtns)
+                .map(b => b.innerText.replace(/[\n\r]+/g, ' ').replace(/\s+/g, ' ').trim())
+                .join(', ');
+
             input.value = selectedValues;
 
             // Remove error styling if valid
@@ -685,27 +692,30 @@
                 email: formData.get('email') || '',
                 preferredContact: formData.get('preferredContact') || '',
                 agent: document.getElementById('agentCheckbox').checked ? 'No agent' : '',
-                propertyInterest: formData.get('propertyInterest') || '',
-                bedrooms: formData.get('bedrooms') || '',
-                neighborhoods: formData.get('neighborhoods') || '',
+                // Use explicit .value from elements to ensure we get the latest JS-updated values
+                propertyInterest: document.getElementById('input-propertyInterest').value || '',
+                bedrooms: document.getElementById('input-bedrooms').value || '',
+                neighborhoods: document.getElementById('input-neighborhoods').value || '',
                 moveInDate: formData.get('moveInDate') || '',
-                budget: formData.get('budget') || '',
-                nonNegotiables: formData.get('nonNegotiables') || '',
+                budget: document.getElementById('input-budget').value || '',
+                nonNegotiables: document.getElementById('input-negotiables').value || '',
                 hasPets: document.getElementById('hasPetsCheckbox').checked ? 'Yes' : 'No',
                 catCount: formData.get('catCount') || '0',
                 dogCount: formData.get('dogCount') || '0',
                 dogDetails: formData.get('dogDetails') || '',
-                coapplicants: formData.get('coapplicants') || '',
-                evictions: formData.get('evictions') || '',
-                verifiableIncome: formData.get('verifiableIncome') || '',
+                coapplicants: document.getElementById('input-coapplicants').value || '',
+                evictions: document.getElementById('input-evictions').value || '',
+                verifiableIncome: document.getElementById('input-verifiableIncome').value || '',
                 creditScore: formData.get('creditScore') || '',
-                tourDays: formData.get('tourDays') || '',
-                tourTimes: formData.get('tourTimes') || '',
+                tourDays: document.getElementById('input-tour-days').value || '',
+                tourTimes: document.getElementById('input-tour-times').value || '',
                 notes: formData.get('notes') || ''
             };
 
             // Send to Google Sheets
-            fetch('https://script.google.com/macros/s/AKfycbxEb-9KX_WQ6vOULT0aiOZt2PbSrI6qiSx65hmI5NDtuv4oDboV9lRzNJxa6g5RnLs23w/exec', {
+            // Send to Google Sheets
+
+            fetch(GOOGLE_SCRIPT_URL, {
                 method: 'POST',
                 mode: 'no-cors',
                 headers: {
@@ -713,15 +723,15 @@
                 },
                 body: JSON.stringify(data)
             })
-            .then(() => {
-                // Show overlay
-                document.getElementById('submissionOverlay').classList.add('active');
-            })
-            .catch(error => {
-                console.error('Error submitting form:', error);
-                // Still show success overlay since no-cors mode prevents error detection
-                document.getElementById('submissionOverlay').classList.add('active');
-            });
+                .then(() => {
+                    // Show overlay
+                    document.getElementById('submissionOverlay').classList.add('active');
+                })
+                .catch(error => {
+                    console.error('Error submitting form:', error);
+                    // Still show success overlay since no-cors mode prevents error detection
+                    document.getElementById('submissionOverlay').classList.add('active');
+                });
         }
 
         function togglePetOptions() {
