@@ -134,11 +134,13 @@
                             <div class="button-group">
                                 <input type="hidden" name="preferredContact" id="input-contact" required>
                                 <button type="button" class="option-btn"
-                                    onclick="selectSingleOption(this, 'input-contact', 'email')">Email</button>
+                                    onclick="selectSingleOption(this, 'input-contact', 'Email')">Email</button>
                                 <button type="button" class="option-btn"
-                                    onclick="selectSingleOption(this, 'input-contact', 'text')">Text Message</button>
+                                    onclick="selectSingleOption(this, 'input-contact', 'Text Message')">Text
+                                    Message</button>
                                 <button type="button" class="option-btn"
-                                    onclick="selectSingleOption(this, 'input-contact', 'phone')">Phone Call</button>
+                                    onclick="selectSingleOption(this, 'input-contact', 'Phone Call')">Phone
+                                    Call</button>
                             </div>
                         </div>
 
@@ -345,9 +347,9 @@
                             <div class="button-group">
                                 <input type="hidden" name="coapplicants" id="input-coapplicants" required>
                                 <button type="button" class="option-btn"
-                                    onclick="selectSingleOption(this, 'input-coapplicants', 'yes')">Yes</button>
+                                    onclick="selectSingleOption(this, 'input-coapplicants', 'Yes')">Yes</button>
                                 <button type="button" class="option-btn"
-                                    onclick="selectSingleOption(this, 'input-coapplicants', 'no')">No</button>
+                                    onclick="selectSingleOption(this, 'input-coapplicants', 'No')">No</button>
                             </div>
                         </div>
 
@@ -356,9 +358,9 @@
                             <div class="button-group">
                                 <input type="hidden" name="evictions" id="input-evictions" required>
                                 <button type="button" class="option-btn"
-                                    onclick="selectSingleOption(this, 'input-evictions', 'yes')">Yes</button>
+                                    onclick="selectSingleOption(this, 'input-evictions', 'Yes')">Yes</button>
                                 <button type="button" class="option-btn"
-                                    onclick="selectSingleOption(this, 'input-evictions', 'no')">No</button>
+                                    onclick="selectSingleOption(this, 'input-evictions', 'No')">No</button>
                             </div>
                         </div>
 
@@ -367,9 +369,9 @@
                             <div class="button-group">
                                 <input type="hidden" name="verifiableIncome" id="input-verifiableIncome" required>
                                 <button type="button" class="option-btn"
-                                    onclick="selectSingleOption(this, 'input-verifiableIncome', 'yes')">Yes</button>
+                                    onclick="selectSingleOption(this, 'input-verifiableIncome', 'Yes')">Yes</button>
                                 <button type="button" class="option-btn"
-                                    onclick="selectSingleOption(this, 'input-verifiableIncome', 'no')">No</button>
+                                    onclick="selectSingleOption(this, 'input-verifiableIncome', 'No')">No</button>
                             </div>
                         </div>
 
@@ -686,8 +688,8 @@
             // Convert FormData to object for sending to Google Sheets
             const data = {
                 timestamp: new Date().toLocaleString('en-US', { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true }),
-                firstName: formData.get('firstName') || '',
-                lastName: formData.get('lastName') || '',
+                firstName: (formData.get('firstName') || '').replace(/\b\w/g, l => l.toUpperCase()),
+                lastName: (formData.get('lastName') || '').replace(/\b\w/g, l => l.toUpperCase()),
                 phone: formData.get('phone') || '',
                 email: formData.get('email') || '',
                 preferredContact: formData.get('preferredContact') || '',
