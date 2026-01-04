@@ -685,7 +685,7 @@
 
             // Convert FormData to object for sending to Google Sheets
             const data = {
-                timestamp: new Date().toISOString(),
+                timestamp: new Date().toLocaleString('en-US', { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true }),
                 firstName: formData.get('firstName') || '',
                 lastName: formData.get('lastName') || '',
                 phone: formData.get('phone') || '',
